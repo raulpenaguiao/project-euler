@@ -13,5 +13,19 @@ Features:
 Bugs:
  - Memory goes bust for m > 190
 
+### Problem126 - Cuboid layers
+
+Features:
+ - Formula for layer of cuboid computed with tuple f
+ - Priority queue to cycle over all tuples
+ - Search on the space of tuples is tree-like, so there is no repeated computations
+ - Queue search limited in scope for protection
+ - Priority is set by the value of f, so when we reach a tuple that has some specific value, all tuples with lower values have already been visited
+
+Time:
+ - 27.75s to run for n = 1000
+
+
+
 
 
