@@ -51,7 +51,7 @@ Time:
  - 2.7s for first 12k isoceles triangles
 ---
 
-###
+### Problem 141 - Investigating progressive numbers, n, which are also square
 
 **python**
 
