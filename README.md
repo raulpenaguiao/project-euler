@@ -51,5 +51,19 @@ Time:
  - 2.7s for first 12k isoceles triangles
 ---
 
+###
 
+**python**
+
+Features:
+ - Integers are in a geometric series x, y, z if x = a * b^2, y = a * b * c, and z = a * c^2 with b, c coprime and b < c
+ - We can take wlog d > q > r
+ - Get formula n^2 =a * b * ( a * c^3 + b )
+ - Run this formula for all a, b, c in restrictions until we get values larger than the limit
+
+
+Time: 
+ - 10.5s to run until 10^12
+
+---
 
