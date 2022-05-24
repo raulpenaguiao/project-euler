@@ -66,4 +66,20 @@ Time:
  - 10.5s to run until 10^12
 
 ---
+### Problem 151 - Paper sheets of standard sizes: an expected-value problem
+
+**python**
+
+Features:
+ - Random processes
+ - Brute force
+ - Partitions
+ - Hash functions and dictionaries
+
+Time:
+1ms
+
+Notes:
+This problem could have been done much faster were it to be said how the random removal was to be done.
+I, for some reason, assumed that the random extraction of the paper was to be done uniformly over all sizes.
 
