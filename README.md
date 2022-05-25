@@ -83,3 +83,23 @@ Notes:
 This problem could have been done much faster were it to be said how the random removal was to be done.
 I, for some reason, assumed that the random extraction of the paper was to be done uniformly over all sizes.
 
+
+---
+
+### Problem 184 - Triangles containing the origin
+
+**python**
+
+Features:
+ - For any general three points on the upper half of the plane, there are 8 possible triangles with vertices on these points or their reflection along the origin that do not contain the origin in its border
+ - Of these 8 triangles, exactly two of them have the origin in the interior
+ - The "general" condition is satisfied when no two points are colinear with the origin
+ - The algorithm runs over all integer points in the upper half plane on a lim x 2lim box, selecting all the points that are inside the desired circle
+ - For all such points with "primitive" coordinates (gcd = 1), count how many points are multiples, this is an algebraic computation
+ - The final formula can be obtained by knowing all these numbers
+
+
+Time:
+24ms to run up to 105. Complexity is quadratic.
+
+
