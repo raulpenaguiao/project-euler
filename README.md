@@ -107,6 +107,7 @@ Time:
 
 
 ### Problem 757 - Stealthy numbers
+24th May 2022
 
 **python**
 
@@ -123,7 +124,24 @@ Time:
 
 ---
 
+### Problem 662 - Fibonacci paths
+24th May 2022
 
+**python**
+
+Features:
+ - Simple dynamic programming on a 10k x 10k grid
+ - There are 20 fibonacci numbers <= 10k and there are 50 + 2*20 = 90 relevant steps in a 10k x 10k grid
+ - This all amounts to 900M operations, and the long time is atributed to the poor management of lists from python
+
+
+Time:
+4000 seconds in UZH server
+
+Notes:
+This code can be much more eficient in C++
+
+---
 
 
 
