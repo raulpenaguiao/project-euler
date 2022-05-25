@@ -103,3 +103,27 @@ Time:
 24ms to run up to 105. Complexity is quadratic.
 
 
+---
+
+
+### Problem 757 - Stealthy numbers
+
+**python**
+
+Features:
+ - Zeores of a degree two polynomial. If (x-a)(x-b) = x^2 - F'x + N and (x-c)(x-d) = x^2 - Fx + N, these polynomials have integer solutions and F + 1 = F'
+ - Integer solutions of quadratics means F^2 - 4N is a square x^2 and (F+1)^2 - 4N = y^2
+ - x and y satisfy 0 < x < y - 1 and x = y + 1 mod 2, are integers
+ - Given x, y we have 4 N = (y^2 - x^2 - 1)^2 - x^2
+ - We can find all N that satisfy an equation of this type by checking all x, y < sqrt(N)
+ - This may look O(N) but for each N^(1/4 + eps) < y < sqrt(N) we just need to run x until a bound that only depends on epsilon, so complexity is O(N^(1/4+1/2))
+
+Time:
+100 seconds in UZH server
+
+---
+
+
+
+
+
