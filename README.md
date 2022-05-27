@@ -143,5 +143,23 @@ This code can be much more eficient in C++
 
 ---
 
+### Problem 788 - Dominating Numbers
+26th May 2022
+
+**python**
+
+Features:
+ - Combinatorial formula to get DP to work
+ - Linear time if binomials are precomputed
+
+$$\sum_{u=0}^{} \zeta(u)\left[ \binom{LIM + 1}{u + 1} - \binom{2*u - 1}{u + 1} \right] $$
+
+Here we are using prod = [1, 9, 9*9, 9*9*8, 9*9*8*7, ...] representing the choices of digits that we have for each block
+$$ \zeta(u) = \sum_{\lambda \vdash [u] } prod( \ell(\lambda )) $$
+
+Time:
+0.89s after optimization
+---
+
 
 
