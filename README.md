@@ -143,6 +143,20 @@ This code can be much more eficient in C++
 
 ---
 
+### Problem 679 - Freefarea
+27th May 2022
+
+**python**
+
+Features:
+ - Dynamic programming on a 2**12  x 30 grid
+ - DP[n][word][b1, b2, b3, b4] is the number of words of length n that end in word, and have an occurrence of the desired strings or not, according to b1, ..., b4
+
+Time:
+0.536 seconds for LIM = 30
+
+---
+
 ### Problem 788 - Dominating Numbers
 26th May 2022
 
@@ -160,6 +174,5 @@ $$ \zeta(u) = \sum_{\lambda \vdash [u] } prod( \ell(\lambda )) $$
 Time:
 0.89s after optimization
 ---
-
 
 
