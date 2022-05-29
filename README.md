@@ -157,6 +157,22 @@ Time:
 
 ---
 
+### Problem 772 - Balanceable k-bounded partitions
+28th May 2022
+
+**python**
+
+Features:
+ - Answer is lcd(1, ..., k) * 2. This can be computed by computing all the primes smaller than k
+ - It is easy to observe that 2*j should divide f(k), because if n = 2 j * m + r, for r < 2j, the following partition j + ... + j + r is not balanceable.
+ - It turns out that all these partitions cover all n < lcd(1, ..., k) * 2
+ - Algorithm can be sped up with fast primality test like miller rabbin, instead of sieving.
+
+Time:
+56s for LIM = 10 ** 8
+
+---
+
 ### Problem 788 - Dominating Numbers
 26th May 2022
 
