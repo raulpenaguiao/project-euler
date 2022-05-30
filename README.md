@@ -124,6 +124,24 @@ Time:
 
 ---
 
+### Problem 630 - Crossed lines 
+29th May 2022
+
+**python**
+
+Features:
+ - Sorting all the lines according to the slope gives us a partition of the lines into blocks
+ - The final answer is, where L is the set of lines and the sum runs over blocks of parallel lines
+$$ \sum_{b} |b| \times (|L| - |b|) $$ 
+because each line intersects any non-parallel line
+ - Used fractions as pairs of integers, so precision will never be an issue
+
+
+Time: 
+73.37s which is just above the threshold
+
+---
+
 ### Problem 662 - Fibonacci paths
 24th May 2022
 
