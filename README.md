@@ -175,6 +175,25 @@ Time:
 
 ---
 
+### Problem 727 - Triangle of circular arcs
+
+**python**
+
+Features:
+ - Computational geometry
+ - The point E = (xe, ye) arises as the solution of the following system of three equations, where $r$ is the radius of the inner small circle centered at E
+$$ |EB|^2 = x_e^2 + y_e^2 = (r + r_b)^2$$
+$$ |EC|^2 = (x_e - x_c)^2 + y_e^2 = (r + r_c)^2 $$
+$$ |EA|^2 = (x_e - x_a)^2 + (y_e - y_a)^2 = (r + r_a)^2 $$
+ - These three equations all simplify to two linear equations which give $x_e = x_e(r)$ and $y_e = y_e(r)$
+ - Using these linear equations on the first equation, we obtain a quadratic formula that $r$ must hold.
+ - To distinguish which of these solutions interests us we should pick the smallest such that r > 0
+ - Regular python precision is enough to carry the errors
+
+Time: 0.84s
+
+---
+
 ### Problem 772 - Balanceable k-bounded partitions
 28th May 2022
 
