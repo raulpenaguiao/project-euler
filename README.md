@@ -176,7 +176,7 @@ Time:
 ---
 
 ### Problem 727 - Triangle of circular arcs
-
+02nd June 2022
 **python**
 
 Features:
@@ -228,4 +228,14 @@ Time:
 0.89s after optimization
 ---
 
+### Problem 804 - Counting Binary Quadratic Representations
+1st July 2022
 
+**python**
+
+Features:
+ - Counting integer points inside an algebraic curve
+
+Time: 
+15s
+---
