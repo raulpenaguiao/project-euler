@@ -105,6 +105,21 @@ Time:
 
 ---
 
+### Problem 202 - Laserbeam
+3rd Otober 2022
+
+**python**
+
+Features:
+ - The number of paths with N bounces is the number of pairs (a, b) that are coprime such that a+b = 2 N - 3 and a -b = 0 mod 3
+ - We code a function PHI2 that runs over all elements a < M = (N+3)/2, compute its gcd with M-a, and checks if it is one
+ - Dues to symmetry, we can stop att M/2
+ - In the forum, exact formulas were found for phi2 in the case studied, where it is approximately phi/3
+
+Time: 1828 seconds
+
+---
+
 
 ### Problem 757 - Stealthy numbers
 24th May 2022
@@ -239,3 +254,5 @@ Features:
 Time: 
 15s
 ---
+
+
