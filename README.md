@@ -105,6 +105,20 @@ Time:
 
 ---
 
+### Problem 186 - Connectedness of a network
+
+Features:
+Eeach time a call is made we merge trees by point one root to the other root.
+This data structure allows for a seamless union of sets.
+We just have to remember how many elements are below a root at every time.
+
+Time:
+838.96 seconts.
+For some reason the code starts to slow down once we pass 1M calls. I want to search the reason for this
+
+
+---
+
 ### Problem 202 - Laserbeam
 3rd Otober 2022
 
