@@ -119,6 +119,21 @@ For some reason the code starts to slow down once we pass 1M calls. I want to se
 
 ---
 
+### Problem 201 - Subsets with a unique sum
+
+Features:
+ - The problem starts with a very scary number of subsets of size 50. This is not the way to do
+ - Define v[s][k][t] to be the number of sets of size k that sum up to t
+ - s <= 100, k <= s and k <= 50.
+ - This satisfies a recursive relation
+ - Layer the vector v so that we only use the recursive relation on the previous value, allowing us to save up on 50* less memory.
+
+Time:
+204.8 seconds
+
+
+---
+
 ### Problem 202 - Laserbeam
 3rd Otober 2022
 
