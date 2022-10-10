@@ -171,6 +171,21 @@ Time:
 
 ---
 
+### Problem 624 - Two heads are better than one
+10th October 2022
+
+**python**
+
+Features:
+ - Rational and a sqrt(5) + b numbers data structure that allows for multiplication, division, subtraction etc.
+ - Geometric formula for the sum of Fibonnacci numbers
+ - The probabilities of the desired events can be written using Fibonnacci numbers
+
+Time:
+0.011 seconds, blazingly fast
+
+---
+
 ### Problem 630 - Crossed lines 
 29th May 2022
 
