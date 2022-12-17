@@ -138,7 +138,7 @@ Time:
 ---
 
 ### Problem 202 - Laserbeam
-3rd Otober 2022
+3rd October 2022
 
 **python**
 
@@ -151,6 +151,32 @@ Features:
 Time: 1828 seconds
 
 ---
+
+
+### Problem 237 - Tours on a 4 x n playing board
+17th December 2022
+
+**python**
+
+Features:
+ - Interpret a walk on the board as a path of length n between the connections
+ - Paths on graphs are powers of matrices
+ - Fast exponentiation
+
+
+Further reading:
+Consider the gaph with 6 vertices a, b, c, d, f, g
+Reading vertically, representing connections with - and non connections with |, we have
+a = --||
+b = ||--
+c = -||-
+d = |--|
+f = g = ----
+The difference between f and g is how the nodes connect to the left (first with last, second with third OR first with second and third with last)
+We draw edges v -> w if v can be placed exactly on the right, allowing for a complete path.
+
+
+Time: 2.69ms, blazingly fast
 
 
 ### Problem 757 - Stealthy numbers
