@@ -329,3 +329,22 @@ Time:
 ---
 
 
+### Problem 813 - XOR-Powers
+06th Jan 2023
+
+**python**
+
+Features:
+ - Product and sum operations given are equivalent to polynomial ring structure in F2
+ - Conversion from a polynomial to the corresponding number is simply evaluation at 2, in Z
+ - We can compute powers of polynomials and powers module using fast exponentiation
+ - Students' dream formula applies! 
+$$(x + y)^{2^k} = x^{2^k} + y^{2^k}$$
+
+This means that computing the power of a polynomial p can be done with the odd and even factors separately.
+Specifically, we want to compute $(1 + x + x^3)^{8^12 * 12^8}$ but $8^{12} * 12^8 = 2^{52} * 3^8$
+So we can compute (1 + x + x^3)^{3^8}$ directly (giving us a list of size $3^8 * 3 \sim 20k$), the resulting polynomial raised to $2^{52}$ is the same as the polynomial in the variable $x^{2^{52}}$
+
+Time:
+42ms
+---
