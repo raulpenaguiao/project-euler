@@ -255,11 +255,22 @@ This code can be much more eficient in C++
 **python**
 
 Features:
- - Dynamic programming on a 2**12  x 30 grid
+ - Dynamic programming on a $2^{12}  x 30$  grid
  - DP[n][word][b1, b2, b3, b4] is the number of words of length n that end in word, and have an occurrence of the desired strings or not, according to b1, ..., b4
 
 Time:
 0.536 seconds for LIM = 30
+
+---
+### Problem 714 - Duodigits
+07th January 2022
+**python**
+
+Features:
+ - Precomputation of all duodigit numbers up to $2^{21}$
+ -  Brute force
+
+Time: 400s
 
 ---
 
@@ -348,3 +359,5 @@ So we can compute (1 + x + x^3)^{3^8}$ directly (giving us a list of size $3^8 *
 Time:
 42ms
 ---
+
+
