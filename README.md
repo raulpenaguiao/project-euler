@@ -308,6 +308,26 @@ Time:
 56s for LIM = 10 ** 8
 
 ---
+### Problem 779 - Prime factor and Exponent
+07th Jan 2023
+
+**python**
+
+Features:
+ - To compute the limit, we split the terms into sets $M_p = \{n | p(n) = p\}$
+ - The sum on each set commutes with the limit, because of monotone convergence theorem
+ - A closed form for each term can be computed when $N = p_1... p_{m-1}p_m^a$ and $a$ is brought to infinity.
+In this case, there are exactly $\phi(p_1 ... p_{m-1}) (p^{a -b} - p^{a-b-1})$ terms that have $p(n) = p_m$ and $a(n) = b$
+ - Simplified formula
+$$ \sum_{K\geq 1} f_K = \sum_i \left( \prod_{j<i} \frac{p_j-1}{p_j} \right) \frac{1}{(p_m)^2p_m}$$
+ - Precomputing powers up to 1M
+
+
+
+Time:
+321ms
+
+---
 
 ### Problem 788 - Dominating Numbers
 26th May 2022
