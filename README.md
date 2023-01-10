@@ -293,6 +293,22 @@ Time: 0.84s
 
 ---
 
+### Problem 737 - Coin Loops
+10th Jan 2023
+
+**python**
+
+Features:
+ - Complex numbers
+ - Recursive formula for the center of mass: starting with $y_0 = 1$
+$$theta_n = arccos(|y_{n-1}|/2) + cis(y_{n-1})$$
+$$y_n = (e^{i theta_{n} * n y_{n-1})/n+1)$$
+
+
+Time: 861.4s
+
+---
+
 ### Problem 772 - Balanceable k-bounded partitions
 28th May 2022
 
