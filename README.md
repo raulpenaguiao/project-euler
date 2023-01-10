@@ -268,9 +268,22 @@ Time:
 
 Features:
  - Precomputation of all duodigit numbers up to $2^{21}$
- -  Brute force
+ - Brute force
 
 Time: 400s
+
+---
+### Problem 717 - Summation of a modular formula
+10th Jan 2023
+**python**
+
+Features:
+ - Modular power and fast exponentiation
+ - g(p) has a formula, is the quotient of the following number by p
+$$ ( 2^p mod p^2) * (2^{p-2} * 2^{ 2^p mod p-1} mod p) mod p^2$$
+This can be proven by a mix of Fermat's theorem and clever rearangement
+
+Time: 17.345s
 
 ---
 
