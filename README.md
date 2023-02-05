@@ -13,10 +13,10 @@ Features:
  - An exponentiation sequence is an *additive* sequence
  - BFS over all possible additive sequences that satisfy some lax inequalities
  - Runs in less than 20 seconds for < 190
- - Runs in 8 min < in UZH computers for m = 200
+ - Runs in 8 min < in UZH computers for $m = 200$
 
 Bugs:
- - Memory goes bust for m > 190 in a laptop!
+ - Memory goes bust for $m > 190$ in a laptop!
 
 ---
 
@@ -32,7 +32,7 @@ Features:
  - Priority is set by the value of f, so when we reach a tuple that has some specific value, all tuples with lower values have already been visited
 
 Time:
- - 27.75s to run for n = 1000
+ - 27.75s to run for $n = 1000$
 ---
 
 ### Problem 138 - Special isoceles triangles
@@ -40,10 +40,10 @@ Time:
 **python**
 
 Features:
- - b has to be even number, b = 2 b'
- - Use formula for Pythagorean triples (h, b', L) gives triple (t, r, s)
+ - b has to be even number, $b = 2 b'$
+ - Use formula for Pythagorean triples $(h, b', L)$ gives triple $(t, r, s)$
  - t has to be 1 for mdc considerations
- - Given equation reduces to (s-2 r)^2 - 5 r^2 = +- 1
+ - Given equation reduces to $(s-2 r)^2 - 5 r^2 = +- 1$
  - [Pell's equation](https://en.wikipedia.org/wiki/Pell%27s_equation) gives us solution to these equations knowing the convergents of sqrt(5)
 
 Time:
@@ -56,9 +56,9 @@ Time:
 **python**
 
 Features:
- - Integers are in a geometric series x, y, z if x = a * b^2, y = a * b * c, and z = a * c^2 with b, c coprime and b < c
- - We can take wlog d > q > r
- - Get formula n^2 =a * b * ( a * c^3 + b )
+ - Integers are in a geometric series $x, y, z$ if $x = a * b^2$, $y = a * b * c$, and $z = a * c^2$ with $b, c$ coprime and $b < c$
+ - We can take wlog $d > q > r$
+ - Get formula $n^2 =a * b * ( a * c^3 + b )$
  - Run this formula for all a, b, c in restrictions until we get values larger than the limit
 
 
@@ -74,10 +74,9 @@ Features:
  - Pitagorean triples: if $f^2+g^2 = h^2$, then there are integers $r, m, n$ such that $f = r(m^2 - n^2)$, $ g = 2 r m n $ and $h=r (m^2+n^2)$, or symmetrically about $f, g$
 - Let $a^2 = x - y$, $b^2 = y - z$ and $d^2 = y + z$. These numbers satisfy the following constraints:
 $ b \equiv_2 d$, $d > b$, and $ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2$ are squares.
- - We can use pitagorean triples on $a^2$, $b^2$ and $a^2+b^2$. Write $a^2 = r (m^2-n^2)$ and $b^2 = 2 r m n$, (OR switch a and b, one of these will find the minimal solution).
- - Find $d, r, m, n$ integers such that the above holds that minimize 
-$ d^2{2}/{3} + r (m^2-n^2) - r m n $
- - Minimizing formula depends quadratically on $d$, so this is the variable that can grow faster while $r, m, n$ should grow slower$.
+ - We can use pitagorean triples on $a^2$, $b^2$ and $a^2+b^2$. Write $a^2 = r (m^2-n^2)$ and $b^2 = 2 r m n$, (OR switch a and b, one of these will find the minimal solution). There is also a coprimality condition but I don't care too much for that.
+ - Find $d, r, m, n$ integers such that the above holds that minimize  $$ d^2\frac{2}{3} + r (m^2-n^2) - r m n $$
+ - Minimizing formula depends quadratically on $d$, so this is the variable that can grow faster while $r, m, n$ should grow slower.
 
 Time:
  - 7.333s
