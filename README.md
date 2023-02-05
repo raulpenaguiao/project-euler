@@ -63,7 +63,7 @@ Features:
 
 
 Time: 
- - 10.5s to run until 10^12
+ - 10.5s to run until $10^12$
 
 ---
 ### Problem 142 - Perfect Square Collection
@@ -71,10 +71,9 @@ Time:
 **python**
 
 Features:
- - Pitagorean triples: if $f^2+g^2 = h^2$, then there are integers $r, m, n$ such that $f = r*(m^2 - n^2)$, $g = 2*r*m*n$ and $h=r*(m^2+n^2)$, or symmetrically about $f, g$
+ - Pitagorean triples: if $f^2+g^2 = h^2$, then there are integers $r, m, n$ such that $f = r(m^2 - n^2)$, $ g = 2 r m n $ and $h=r (m^2+n^2)$, or symmetrically about $f, g$
 - Let $a^2 = x - y$, $b^2 = y - z$ and $d^2 = y + z$. These numbers satisfy the following constraints:
-$$ b \equiv_2 d , \, \, d > b$$
-$$ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2 \text{ are squares}$$
+$ b \equiv_2 d$, $d > b$, and $ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2 \text{ are squares}$
  - We can use pitagorean triples on $a^2$, $b^2$ and $a^2+b^2$. Write $a^2 = r*(m^2-n^2)$ and $b^2 = 2*r*m*n$, (OR switch a and b, one of these will find the minimal solution).
  - Find $d, r, m, n$ integers such that the above holds that minimize 
 $$ d^2\frac{2}{3} + r*(m^2-n^2) - r*m*n$$
