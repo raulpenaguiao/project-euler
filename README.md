@@ -77,7 +77,7 @@ $$ b \equiv_2 d , \, \, d > b$$
 $$ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2 \text{ are squares}$$
  - We can use pitagorean triples on $a^2$, $b^2$ and $a^2+b^2$. Write $a^2 = r*(m^2-n^2)$ and $b^2 = 2*r*m*n$, (OR switch a and b, one of these will find the minimal solution).
  - Find $d, r, m, n$ integers such that the above holds that minimize 
-$$ d^2\frac{2}{3} + r*(m^2-n^2) - r*m*n$
+$$ d^2\frac{2}{3} + r*(m^2-n^2) - r*m*n$$
  - Minimizing formula depends quadratically on $d$, so this is the variable that can grow faster while $r, m, n$ should grow slower$.
 
 Time:
