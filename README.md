@@ -103,6 +103,20 @@ I, for some reason, assumed that the random extraction of the paper was to be do
 
 ---
 
+###Problem 176 - Right-angled triangles that share a cathetus
+
+**python** and **pen and paper**
+
+Features:
+ - Pythagorean triplets $(a, b, c)$ satisfy a formula.
+ - Number of solutions of $a=t$, for a fixed $t$, depends on the number of prime factors of $t$ and powers of $2$ that divide $t$.
+ - If $F(t)$ is the number of triangles with $t$ as a side, $F(t) = 0$ if $2|t$ but$t$ is not a multiple of $4$.
+ - For $t$ odd, $1+2 F(t) = \sigma(t^2)$, for $t$ multiple of $4$, $1+2F(t) = \sigma((t/2)^2)$. The second formula grows much faster.
+ - Formula for $\sigma$ wrt its prime factorization.
+
+Time: < 1ms
+
+---
 ### Problem 184 - Triangles containing the origin
 
 **python**
