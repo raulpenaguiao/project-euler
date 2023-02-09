@@ -440,4 +440,19 @@ Time:
 42ms
 ---
 
+### Problem 816 - Shortest distance among points
+09th Fev 2023
 
+**python**
+
+Features:
+ - Two programs were created: one with the typical shortest distance among points and a naive adaptation.
+ - Typical program does binary search on the x coordinate and in the interface between the division it compares all points. Surprising classical fact is we only need to check distances between at most $7n$ points.
+ - Naive adaptation splits the plane into $m^2$ tiles and we only need to check distances between points on the same or adjacent tiles.
+ - Points **do start repeating** before $d < 4 10^6$, but this is below the bound requested
+
+Time:
+ 123s for classical program
+ 34s for naive adaptation
+
+-- 
