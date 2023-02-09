@@ -337,6 +337,19 @@ Time: 0.84s
 
 ---
 
+### Problem 731 - A Stoneham number
+09th Feb 2023
+**python**
+
+Features:
+ - We can trim the sum to $33$ terms, as any term afterwards will not contribute to the decimal places at hand
+ - Let $a_j^i$ be the $j$-th digit after the decimal point of $3^{-i}$. This satisfies the formula $a_j^i = (10^[j-1}%3)//3^i$
+ - Use powermod for fast exponentiation
+
+Time: 0.0161s
+
+---
+
 ### Problem 737 - Coin Loops
 10th Jan 2023
 
