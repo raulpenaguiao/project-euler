@@ -157,10 +157,10 @@ For some reason the code starts to slow down once we pass 1M calls. I want to se
 
 Features:
  - The problem starts with a very scary number of subsets of size 50. This is not the way to do
- - Define v[s][k][t] to be the number of sets of size k that sum up to t
- - s <= 100, k <= s and k <= 50.
+ - Define v[s][k][t] to be the number of sets of size $k$ that sum up to $t$
+ - $s <= 100$, $k <= s$ and $k <= 50$.
  - This satisfies a recursive relation
- - Layer the vector v so that we only use the recursive relation on the previous value, allowing us to save up on 50* less memory.
+ - Layer the vector v so that we only use the recursive relation on the previous value, allowing us to save up on $50$ times less memory.
 
 Time:
 204.8 seconds
@@ -174,10 +174,10 @@ Time:
 **python**
 
 Features:
- - The number of paths with N bounces is the number of pairs (a, b) that are coprime such that a+b = 2 N - 3 and a -b = 0 mod 3
- - We code a function PHI2 that runs over all elements a < M = (N+3)/2, compute its gcd with M-a, and checks if it is one
- - Dues to symmetry, we can stop att M/2
- - In the forum, exact formulas were found for phi2 in the case studied, where it is approximately phi/3
+ - The number of paths with $N$ bounces is the number of pairs $(a, b)$ that are coprime such that $a+b = 2 N - 3$ and $a -b = 0$ mod $3$
+ - We code a function PHI2 that runs over all elements $a < M = (N+3)/2$, compute its gcd with $M-a$, and checks if it is one
+ - Dues to symmetry, we can stop at $M/2$
+ - In the forum, exact formulas were found for phi2 in the case studied, where it is approximately $phi/3$
 
 Time: 1828 seconds
 
@@ -268,7 +268,7 @@ Time:
 
 Features:
  - Simple dynamic programming on a 10k x 10k grid
- - There are 20 fibonacci numbers <= 10k and there are 50 + 2*20 = 90 relevant steps in a 10k x 10k grid
+ - There are 20 fibonacci numbers <= 10k and there are $50 + 2\times 20 = 90$ relevant steps in a $10k x 10k$ grid
  - This all amounts to 900M operations, and the long time is atributed to the poor management of lists from python
 
 
@@ -373,12 +373,12 @@ Time: 861.4s
 
 Features:
  - Answer is lcd(1, ..., k) * 2. This can be computed by computing all the primes smaller than k
- - It is easy to observe that 2*j should divide f(k), because if n = 2 j * m + r, for r < 2j, the following partition j + ... + j + r is not balanceable.
- - It turns out that all these partitions cover all n < lcd(1, ..., k) * 2
+ - It is easy to observe that $2j$ should divide $f(k)$, because if $n = 2 j \times  m + r$, for $r < 2j$, the following partition $j + ... + j + r$ is not balanceable.
+ - It turns out that all these partitions cover all $n < 2 lcd(1, ..., k)$
  - Algorithm can be sped up with fast primality test like miller rabbin, instead of sieving.
 
 Time:
-56s for LIM = 10 ** 8
+56s for $LIM = 10^8$
 
 ---
 ### Problem 779 - Prime factor and Exponent
@@ -392,7 +392,7 @@ Features:
  - A closed form for each term can be computed when $N = p_1... p_{m-1}p_m^a$ and $a$ is brought to infinity.
 In this case, there are exactly $\phi(p_1 ... p_{m-1}) (p^{a -b} - p^{a-b-1})$ terms that have $p(n) = p_m$ and $a(n) = b$
  - Simplified formula
-$$ \sum_{K\geq 1} f_K = \sum_i \left( \prod_{j<i} \frac{p_j-1}{p_j} \right) \frac{1}{(p_m)^2p_m}$$
+$$ \sum_{K\geq 1} f_K = \sum_i \left( \prod_{j < i} \frac{p_j-1}{p_j} \right) \frac{1}{(p_m)^2p_m}$$
  - Precomputing powers up to 1M
 
 
@@ -411,9 +411,9 @@ Features:
  - Combinatorial formula to get DP to work
  - Linear time if binomials are precomputed
 
-$$\sum_{u=0}^{} \zeta(u)\left[ \binom{LIM + 1}{u + 1} - \binom{2*u - 1}{u + 1} \right] $$
+$$\sum_{u=0}^{} \zeta(u)\left[ \binom{LIM + 1}{u + 1} - \binom{2u - 1}{u + 1} \right] $$
 
-Here we are using prod = [1, 9, 9*9, 9*9*8, 9*9*8*7, ...] representing the choices of digits that we have for each block
+Here we are using $prod = [1, 9, 9\times 9, 9\times 9\times , 9\times 9\times 8\times 7, ...] representing the choices of digits that we have for each block
 $$ \zeta(u) = \sum_{\lambda \vdash [u] } prod( \ell(\lambda )) $$
 
 Time:
@@ -454,7 +454,7 @@ Time:
 ---
 
 ### Problem 816 - Shortest distance among points
-09th Fev 2023
+09th Feb 2023
 
 **python**
 
@@ -469,3 +469,29 @@ Time:
  34s for naive adaptation
 
 -- 
+### Problem 820 - Nth digit of reciprocals
+10th Feb 2023
+
+**python**
+
+Features:
+ - Use the same formula as problem 731 (Stoneham number) for the nth digit of areciprocal of x: $d_n(1/x) = (10^{n-1} % x)10 // x$
+ - Use fasat exponentiation and powermod
+
+Time:
+78s
+
+--
+## Problem 828 - Numbers Challenge
+10th Feb 2023
+
+**python**
+
+Features:
+ - A sequence of operations is a triple: a binary tree with n internal nodes, a list of n operations and a list of $n+1$ values.
+ - Given list of values, generate all ~200 trees of size at most seven, for each size $n+1$ generate an arrangement (combination + permutation) of the values of size $n$ ( ~ $7!$ ) and a list of $n$ operations $=4^n$.
+ - Worse case scenario this gives at most $7\times 10^{12}$ operations (rough)
+ - Check if arrangement at hand minimizes sum before testing with all operation lists and trees
+
+Time: 5000 seconds
+--
