@@ -208,8 +208,18 @@ We draw edges v -> w if v can be placed exactly on the right, allowing for a com
 
 
 Time: 2.69ms, blazingly fast
+---
+### Problem 531 - Chinese leftovers
+12th Feb 2023
 
+**python**
 
+Features:
+ - Chinese remainder theorem defined iteratively and using extended gcd
+ - Precomputing euler phis and factorizations of all numbers between $10^6$ and $10^6+5000$
+
+Time: 147s
+---
 ### Problem 757 - Stealthy numbers
 24th May 2022
 
