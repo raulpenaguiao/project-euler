@@ -80,6 +80,19 @@ $ b \equiv_2 d$, $d > b$, and $ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2$ are squar
 
 Time:
  - 7.333s
+---
+
+### Problem 143 - Torricelli Triangles
+
+- Code created on the 30/10/2023
+- Uses the fact that the angles at X are 120
+- Cosine law tells us that a**2 = p**2 + p*q + q**2 and so on
+- Solutions to this equation can be generated with the formula in
+    https://www.had2know.org/academics/integer-triangles-120-degree-angle.html
+- Generate first all allowed pairs (p, q) that have an integer solution above, there are $3\times 10^5$ such pairs
+    then run over all p and try to find q and r that are themselves an allowed pair
+
+Time: Runs in 8.61 seconds
 
 
 ---
