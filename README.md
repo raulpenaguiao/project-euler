@@ -3,6 +3,12 @@ This is where I will leave the code related to project euler
 
 
 
+For python, to make sure we have the right classes on the code, we have to run in the uppermost folder (project-euler) the following command
+python3 -m project_euler.problems_code.EulerXXX.EulerXXX
+or
+python3 -m project_euler.archive.EulerXXX.EulerXXX
+This guarantees that all modules are correctly loaded
+
 ## Problem explanation
 
 ### Problem 122 - Efficient exponentiation
@@ -115,7 +121,175 @@ I, for some reason, assumed that the random extraction of the paper was to be do
 
 
 ---
+### Problem 153 - Investigating Gaussian Integers
 
+**python**
+
+Features:
+ - Divisors of integers
+
+Code made on the 26/10/2023
+For each divisor d we count how many positive integers $k$ are there such that $d|k$, and multiply by $re(d)$.
+If $d$ is integer, this is done directly (add $i\times (N//i)$)
+if $a, b > 0$, then $a + ib$ divides all the multiples of $d(a'^2 + b'^2)$, where $d = gcd(a, b)$, $a' = a/d$, $b' = b/d$
+so for all $a', b'$ coprime, we simply sum $d a' (N//(d(a'^2 + b'^2)))$
+if $im(d) < 0$, we just copy what happens on the positive side (multiply by 2)
+
+Time: 74.51598477363586s
+
+---
+### Problem 154 - Exploring Pascal's Pyramid
+
+
+**python**
+
+Features:
+ - Largest prime power dividing $n!$
+ - Do rare checks first
+
+Notes:
+Code written on the 2023/11/03
+Once can compute very efficiently the largest exponent $p^t$ that divides $n!$ ($v(p, n)$ function)
+Very directly computes the exponent of 2 and 5 of binom[N, (a, b, c)] and checks if these are >= 12
+Check the fives condition before checking the twos condition
+
+Time: 7.8 minutes = 470 seconds
+
+---
+### Problem 155 - Counting Capacitor Circuits
+
+**python**
+
+Features:
+ - Recursion
+ - Rational structure
+
+Notes:
+Code written on the 2023/11/08
+Recursively checks what are the numbers that can be obtained for capacity structures
+for precision reasons we use precise rational structure
+
+Time: 102.44 seconds
+
+
+---
+### Problem 156 - Counting Digits
+
+**python**
+
+Features:
+ - Divide and conquer
+ - Recursion
+
+Notes:
+Code written on the 2023/11/03
+
+Use a divide and conquer approach. if we know $f(n\times 10^s-1, d)$ we can compute $f((n\times 10+t)\times 10^{s-1} - 1, d)$ very easily
+Only divide when there is any chance there is a solution in the interval.
+
+Time: 0.023s
+
+---
+### Problem 158 - Lexicographical neighbours
+
+**python**
+
+Features:
+ - Binomial numbers
+
+Notes:
+Code on the 13/11/2023
+Formula for $p(n) = (2^n - n - 1)\times \binom{26}{n}$
+
+Time: 0.0000 seconds
+
+---
+### Problem 161 - Triominoes
+
+**python**
+
+Features:
+ - Memoisation with dictionaries
+ - Partitions
+
+
+Notes:
+#Code written in on 2023/12/01
+#In each partially filled board, we identify the uppermost tile to the left that is free, and try to put any tile possible there
+#We use memoisation to make sure we dont evaluate a partially filled board twice
+
+Time: 593 seconds
+
+---
+### Problem 165 - Intersections
+
+**python**
+
+Features:
+ - Geometry
+ - Determinant formula for convex points
+ - Rational class
+
+Notes:
+Code written on the 13/11/2023
+For four points, computes four determinantes to check that the points form a convex hull in the determined order
+In this case, we compute the desired intersection point
+We need to rule out the case of several lines intersecting at the same point
+For that we develop a rational data class to be able to check if a point is already the intersection
+
+Time: 32.2 seconds
+
+---
+### Problem 170 - Pandigital Concatenating Products
+
+**python**
+
+Features:
+ - Permutations
+ - GCD and divisors
+
+Notes:
+Code written in 2023/12/07
+Generates and orders permutations
+For each permutation, breaks up into pieces and computes the gcd
+For each divisor, tests if this can be the first integer
+
+Time: 31.29 seconds until finding a solution, 10s of which is generating all permutations
+
+
+---
+### Problem 171 - Square Sum of the Digital Squares
+
+**python**
+
+Features:
+ - Dinamic programing with a recursive relation
+
+Notes:
+Code written on the 30/10/2023
+Dinamic programing. These numbers satisfy an easy recursive relation
+First compute how many numbers with at most N digits have $f(k) = M$
+Use this to compute the sum of the numbers with this property
+
+Time: 0.145 seconds
+
+
+---
+### Problem 172 - Few Repeated Digits
+
+**python**
+
+Features:
+ - Dinamic programing with a recursive relation
+
+Notes:
+Code written on 2023/12/01
+Dinamic programming, by counting the number of integers with a digits occurring trice, b digits occurring twice and c digits occurring once
+deleting the last digit gives us an easy recursive formula
+
+Time: 3ms
+
+---
 ###Problem 176 - Right-angled triangles that share a cathetus
 
 **python** and **pen and paper**
@@ -128,6 +302,26 @@ Features:
  - Formula for $\sigma$ wrt its prime factorization.
 
 Time: < 1ms
+
+---
+### Problem 180 - Golden Triplets
+
+**python**
+
+Features:
+ - Fermat Last Theorem
+ - Rational class, this time implemented in an external file
+
+Notes:
+Code written on the 2023/11/23
+Expression reduces to $(x+y+z)(x^n + y^n - z^n)$ allowed rationals are $a/b$ between $0$ and $1$ such that $b <= K$
+Finds all rationals of order 35 (there are 383 such rationals)
+for two rationals, compute the four possible z and sees if they are
+ - between 0 and 1
+ - of the given order
+
+Time: 1.18 seconds
+
 
 ---
 ### Problem 184 - Triangles containing the origin
@@ -146,6 +340,44 @@ Features:
 Time:
 24ms to run up to 105. Complexity is quadratic.
 
+
+
+---
+### Problem 182 - RSA Encryption
+
+**python**
+
+Features:
+ - PowerMod
+ - Order of an element of a group
+
+Notes:
+Code written on 2023/11/15
+$ord_a(m)$ is the smallest integer $i$ such that $m^i = 1 mod a$
+a message is unconcealed if 
+ -  a = 0 mod pq, 
+ -  a = 0 mod p and ord_q(a)| e-1 and (q, a) = 1
+ -  a = 0 mod q and ord_p(a)| e-1 and (p, a) = 1
+ -  ord_pq(a)| e-1 and (pq, a) = 1
+
+Time: 45s
+
+---
+### Problem 185 - Number Mind
+
+**python**
+
+Features:
+ - BFS on possible solutions
+
+Notes:
+Code written in 2023/11/15
+Runs in $10^{n/2}$ memory and time, where $n = 16$.
+Python seems to be really bat at
+For each 8 dig number, computes the number of matching chars on the left side and saves the result
+For each 8 dig number, computes the number of matching chats on the right and sees it it complements well with some of the saved results
+
+Time: 2421 seconds
 
 ---
 
