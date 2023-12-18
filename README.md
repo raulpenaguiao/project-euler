@@ -4,10 +4,17 @@ This is where I will leave the code related to project euler
 
 
 For python, to make sure we have the right classes on the code, we have to run in the uppermost folder (project-euler) the following command
+
+```bash
 python3 -m project_euler.problems_code.EulerXXX.EulerXXX
+```
+
 or
+```bash
 python3 -m project_euler.archive.EulerXXX.EulerXXX
-This guarantees that all modules are correctly loaded
+```
+This guarantees that all modules are correctly loaded.
+Note that you should not type the extention .py of the file
 
 ## Problem explanation
 
@@ -652,6 +659,28 @@ We draw edges v -> w if v can be placed exactly on the right, allowing for a com
 
 Time: 2.69ms, blazingly fast
 
+
+---
+### Problem 247 - 
+18th December 2023
+
+**python**
+
+Features:
+ - Priority queue
+ - Computational geometry
+ - Quadratic formula
+
+Notes:
+Observe that there is a bijection between squares and finite strings of two characters "U" and "R"
+This bijection behaves very well with the index: the tindex of a string is the pair of occurrences of "U" and "R"
+We generate all the strings with 3 "R" and 3 "U", compute the side length of each of the corresponding squares
+The smallest such square serves as a limit to stop the search
+For the search, we use a priority queue to only expore a square when no larger square exists
+
+
+Time:
+4.39 s
 
 ---
 ### Problem 258 - A Lagged Fibonacci Sequence
