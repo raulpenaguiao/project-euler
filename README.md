@@ -322,26 +322,6 @@ for two rationals, compute the four possible z and sees if they are
 
 Time: 1.18 seconds
 
-
----
-### Problem 184 - Triangles containing the origin
-
-**python**
-
-Features:
- - For any general three points on the upper half of the plane, there are 8 possible triangles with vertices on these points or their reflection along the origin that do not contain the origin in its border
- - Of these 8 triangles, exactly two of them have the origin in the interior
- - The "general" condition is satisfied when no two points are colinear with the origin
- - The algorithm runs over all integer points in the upper half plane on a lim x 2lim box, selecting all the points that are inside the desired circle
- - For all such points with "primitive" coordinates (gcd = 1), count how many points are multiples, this is an algebraic computation
- - The final formula can be obtained by knowing all these numbers
-
-
-Time:
-24ms to run up to 105. Complexity is quadratic.
-
-
-
 ---
 ### Problem 182 - RSA Encryption
 
@@ -363,7 +343,27 @@ a message is unconcealed if
 Time: 45s
 
 ---
+### Problem 184 - Triangles containing the origin
+
+**python**
+
+Features:
+ - For any general three points on the upper half of the plane, there are 8 possible triangles with vertices on these points or their reflection along the origin that do not contain the origin in its border
+ - Of these 8 triangles, exactly two of them have the origin in the interior
+ - The "general" condition is satisfied when no two points are colinear with the origin
+ - The algorithm runs over all integer points in the upper half plane on a lim x 2lim box, selecting all the points that are inside the desired circle
+ - For all such points with "primitive" coordinates (gcd = 1), count how many points are multiples, this is an algebraic computation
+ - The final formula can be obtained by knowing all these numbers
+
+
+Time:
+24ms to run up to 105. Complexity is quadratic.
+
+
+
+---
 ### Problem 185 - Number Mind
+15th November 2023
 
 **python**
 
@@ -384,17 +384,126 @@ Time: 2421 seconds
 ### Problem 186 - Connectedness of a network
 
 Features:
-Eeach time a call is made we merge trees by point one root to the other root.
-This data structure allows for a seamless union of sets.
-We just have to remember how many elements are below a root at every time.
+ - Eeach time a call is made we merge trees by point one root to the other root.
+ - This data structure allows for a seamless union of sets.
+ - We just have to remember how many elements are below a root at every time.
 
 Time:
 838.96 seconts.
 For some reason the code starts to slow down once we pass 1M calls. I want to search the reason for this
 
+---
+### Problem 192 - Best Approximations
+23rd November 2023
+
+**python**
+
+Features:
+ - Continued Fractions
+ - Best rational aproximation
+
+Notes:
+Computes the continued fraction of all the square roots up to 100.000, this is the part that takes time
+Then generates all the convergents and semiconvergents (with last entry at least half of the same entry of sqrt(n))
+There is a theorem that tells us exactly which of the convergents are the ones that we want
+But I just select all of them, sort and pick the closest one
+
+
+Time:
+78910 seconds 
+
 
 ---
+### Problem 194 - Coloured Configurations
+5th December 2023
 
+**python**
+
+Features:
+ - Dinamic Programing
+ - Chromatic number of a graph
+
+Notes:
+Recursive formula with the linear structure of the problem
+
+Time:
+16.19 ms
+
+---
+### Problem 195 - 60-degree Triangle Inscribed Circles
+21st November 2023
+
+**python**
+
+Features:
+ - Cosine law
+ - Generating formula for triangles with a fixed angle
+
+Notes:
+Equilateral triangles do not count
+If $a$ is the side opposing to the 60 deg angle, inradius is $\frac{b+c-a}{2 \sqrt{3}}$
+Every primitive such triangle has a unique $m, n$ coprime with $a, b, c$ given below, $(m, n) = 1$ and $2n < m$
+
+Time: 13.9 seconds
+
+---
+### Problem 196 - Prime Triplets
+20th November 2023
+
+**C++**
+
+Features:
+ - Miller Rabin
+
+Notes:
+Possible memory optimisation by sweeping the grid instead of generating it
+
+Time: 505.325 seconds
+
+---
+### Problem 199 - Iterative Circle Packing
+29th November 2023
+
+**python**
+
+Features:
+ - Sodii circles
+ - Computational geometry
+ - Degree two polynomial formula
+
+
+Notes:
+ - inCircle is a function that given three circles, finds the smallest circle that is externally tangent to all three, if it exists
+ - running this $3^9$ times computes the exact coordinates and radii of each circle
+ - float errors do not avalanche because of the decimal library (prec = 10 is enough, this is a mistery)
+
+
+Time:
+1.86s
+
+
+---
+### Problem 200 - Prime-proof Squbes
+6th December 2023
+
+**python**
+
+Features:
+ - Miller Rabin
+ - Prive sieve
+ - Digits computation
+
+Notes:
+Fix arbitrary upper bound, $10^12$ works
+Uses Miller Rabin to check primality (helped me find a bug!)
+Uses sieve up to square root (upper bound/8), dont do square root (upper bound)/8.
+Prime-proof and contaning contiguous substring is naive algorithm
+make sure to generate squbes by using only primes with the right size, created two lists for the effect. Break when you are already above cuts 75% of time
+
+Time:
+0.302422 seconds
+
+---
 ### Problem 201 - Subsets with a unique sum
 
 **pythohn**
@@ -426,9 +535,80 @@ Features:
 
 Time: 1828 seconds
 
+
 ---
+### Problem 210 - Obtuse Angled Triangles
+30th October 2023
 
+**python**
 
+Features:
+ - Computational Geometry
+
+Notes:
+There are three types of points, the hardest ones are in the circle that are dealt with a sweeping algorithm.
+
+Time:
+14.14 seconds
+
+---
+### Problem 213 - Flea Circus
+12th December 2023
+
+**python**
+
+Features:
+ - Markov Chain
+ - Expectation is the sum of the probabilities of 0-1 sum decomposition variables.
+ - Power optimization for matrices
+ - Marge matrix multiplication
+
+Notes:
+Computes the transition matrix between the boards after 50 jumps
+#Afterwards, sums the probability that no bug will end up in this square d
+This latter probability is $1 - p_{e, d}$
+Possible optimization cuts time in half: the markov chain is bipartite, explore only the 2-step markov chain
+
+Time:
+592 seconds
+
+---
+### Problem 223 - Almost Right-angled Triangles I
+12th December 2023
+
+**python**
+
+Features:
+ - Divisors of a number
+ - Prime sieve
+
+Notes:
+For each possible length a computes all the possible sides b, c
+These satisfy $(b+c)\times (c-b) = a\times a - 1$
+This means that $b+c$ is a divisor of $a \times a-1$, that satisfies some bounds, so for all $a\times a-1$ count such divisors and add everything up
+Make sure to precompute the factorization of all integers < 25\times 10^6 /3 to factor $(a-1)(a+1)$
+
+Time:
+6.6 minutes
+
+---
+### Problem 233 - Lattice Points on a Circle
+1st November 2023
+
+**python**
+
+Features:
+ - Generate partitions of a number
+
+Notes:
+How many numbers have a given factorization below a certain threshold
+Use the fact that $f(N) = 4 + 4 \prod_i(1+2a_i)$ where $a_i$ are exponends of primes $p = 1 mod 4$ on the factorization of $N$.
+We also include an excel that was helpful to find the pattern.
+
+Time:
+9.68 seconds
+
+---
 ### Problem 237 - Tours on a 4 x n playing board
 17th December 2022
 
@@ -464,6 +644,30 @@ Features:
  - Precomputing euler phis and factorizations of all numbers between $10^6$ and $10^6+5000$
 
 Time: 147s
+
+---
+### Problem 258 - A Lagged Fibonacci Sequence
+12th December 2023
+
+**C++**
+
+Features: 
+ - Fast exponentiation
+ - Matrix form of recursive formulas
+
+Notes:
+This sequence can be computed by powering a $2000 \times 2000$ matrix $10^{18}$ times
+We use a log complexity algorithm for that matrix power, and make sure all the multiplications are done module 20092010
+There seem to be two imediate impovements ( found on the forums )
+ - First is to compute twice module the two factors $~10k$ of $20092010$ and use chinese remainder theorem
+ - The second is to compute $A^k$ for $k = 0, 1, ..., 1999$ and using Cayley hamilton $A^2000 = A+Id$
+The forums also invented a great optimization. The matrix $A^k$ can be easily computed only knowing the last column, so we just compute this last column and that's it
+This reduces the complexity to $k^2 \log n$, which allows us to have solutions that run under a minute
+We also include a first attempt of coding this with python that took way too long.
+
+Time:
+67906 seconds
+
 ---
 ### Problem 757 - Stealthy numbers
 24th May 2022
@@ -471,12 +675,12 @@ Time: 147s
 **python**
 
 Features:
- - Zeores of a degree two polynomial. If (x-a)(x-b) = x^2 - F'x + N and (x-c)(x-d) = x^2 - Fx + N, these polynomials have integer solutions and F + 1 = F'
- - Integer solutions of quadratics means F^2 - 4N is a square x^2 and (F+1)^2 - 4N = y^2
- - x and y satisfy 0 < x < y - 1 and x = y + 1 mod 2, are integers
- - Given x, y we have 4 N = (y^2 - x^2 - 1)^2 - x^2
- - We can find all N that satisfy an equation of this type by checking all x, y < sqrt(N)
- - This may look O(N) but for each N^(1/4 + eps) < y < sqrt(N) we just need to run x until a bound that only depends on epsilon, so complexity is O(N^(1/4+1/2))
+ - Zeores of a degree two polynomial. If $(x-a)(x-b) = x^2 - F'x + N$ and $(x-c)(x-d) = x^2 - Fx + N$, these polynomials have integer solutions and $F + 1 = F'$
+ - Integer solutions of quadratics means $F^2 - 4N$ is a square $x^2$ and $(F+1)^2 - 4N = y^2$
+ - $x$ and $y$ satisfy $0 < x < y - 1$ and $x = y + 1 mod 2$, are integers
+ - Given $x, y$ we have $4 N = (y^2 - x^2 - 1)^2 - x^2$
+ - We can find all $N$ that satisfy an equation of this type by checking all $x, y < \sqrt{N}$
+ - This may look $O(N)$ but for each $N^{1/4 + eps} < y < \sqrt{N}$ we just need to run x until a bound that only depends on epsilon, so complexity is $O(N^{1/4+1/2})$
 
 Time:
 100 seconds in UZH server
