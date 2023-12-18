@@ -384,13 +384,31 @@ Time: 2421 seconds
 ### Problem 186 - Connectedness of a network
 
 Features:
- - Eeach time a call is made we merge trees by point one root to the other root.
+ - Each time a call is made we merge trees by point one root to the other root.
  - This data structure allows for a seamless union of sets.
  - We just have to remember how many elements are below a root at every time.
 
 Time:
 838.96 seconts.
-For some reason the code starts to slow down once we pass 1M calls. I want to search the reason for this
+For some reason the code starts to slow down once we pass 1M calls.
+
+---
+### Problem 189 - Tri-colouring a Triangular Grid
+15th November 2023
+
+**python**
+
+Features:
+ - Dynamic prgramming
+ - Exponential growth optimization
+
+Notes:
+Dynamic programming allows us to compute the number of colourings of a triangle of size n by knowing colourings of size n-1
+#We have to know the number of colourings that have a specific colouring on the bottom row
+
+Time:
+19.98s
+N = 9 runs in 185s and gives 104224568112581443584
 
 ---
 ### Problem 192 - Best Approximations
@@ -667,6 +685,64 @@ We also include a first attempt of coding this with python that took way too lon
 
 Time:
 67906 seconds
+
+---
+### Problem 259 - Reachable Numbers
+26th October 2023
+
+**python**
+
+Features:
+ - Binary trees
+
+Notes:
+Creates all binary planar trees with all possible five operations (including concatenation) in internal nodes
+We do not allow for internal nodes to have concat when some child is not concat
+Because of division, we have to check if a number is "close" to an integer
+Make sure that when saving a key to the dictionary, we save the integer (so we dont double count)
+
+Times:
+476s (8 minutes)
+
+---
+### Problem 287 - Quadtree Encoding (a Simple Compression Algorithm)
+14th December 2023
+
+**python**
+
+Features:
+ - Computational Geometry
+ - Simulation
+ - Brute force
+
+Notes:
+This just emulates the split for each quadrant
+People seem to find is faster to run a C program than a python on the forums.
+
+Time:
+331 seconds
+
+---
+### Problem 461 - Almost Pi
+2023/12/14
+
+**python**
+
+Features:
+ - Split-in-the-middle algorithm
+ - Decimal package
+ - Binary search
+
+Notes:
+Computes all possible sums of two terms that are below PI
+Sorting this list of sums, for each term $t$ we find the numbers that are close to $\pi-t$ and check if these improve our current best
+Make sure to use binary search for checking values.
+In total there are $L\times 1.5$ integers to test in the function, and so the list will not have more than $n = 2.25\times L^2$ terms.
+Sorting takes $n \log n = O(L^2 \log L)$ and binary search takes $O(\log n) = $O(\log L)$, so the whole algoritm takes $O(L^2 \log L)$ complexity.
+
+Time:
+5 minutes
+
 
 ---
 ### Problem 757 - Stealthy numbers
