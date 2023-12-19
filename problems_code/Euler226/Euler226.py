@@ -1,3 +1,10 @@
+#Computes the integral of the BM curve
+#To this it removes the area below the circle
+#The only thing that is missing here is the part that is below the circle above the curve, which from pictures it does not look like there is any
+#But I should look into graphics or try to find some point close to the edges where this is true
+
+
+
 import time
 start = time.time()
 from decimal import Decimal, getcontext
@@ -8,7 +15,7 @@ ans = 0
 
 
 def s(x):
-    y = x%1
+    y = Decimal(x)%Decimal(1)
     return min(y, Decimal(1)-y)
 
 def B(x):
@@ -46,11 +53,6 @@ def IntegralBM(a):
     return a*a/2+IntegralBM(2*a)/4
 
 def Angle(v1, v2):
-    print((v1[0]*v2[0]+v1[1]*v2[1]))
-    print(Norm(v1))
-    print(Norm(v2))
-    print(Decimal(v1[0]*v2[0]+v1[1]*v2[1]))
-    print(Decimal(math.sqrt(Norm(v1)*Norm(v2))))
     return Decimal(math.acos((v1[0]*v2[0]+v1[1]*v2[1])/Decimal(math.sqrt(Norm(v1)*Norm(v2)))))
 
 def Norm(v):
