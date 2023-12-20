@@ -6,14 +6,6 @@ from ...CL.CL_Sets import Set
 gs = GenerateSetPartitions(Set(elements = [0, 1, 2, 3, 4, 5]))
 strT = {s:s.ToString() for s in gs}
 print(len(gs))
-def GenerateStrings(st, l):
-    if l == 0:
-        return [""]
-    ans = []
-    for s in GenerateStrings(st, l-1):
-        for c in st:
-            ans.append(c+s)
-    return ans
 
 #gs = GenerateStrings("project", 3)
 print("The matrices have size = " , len(gs))
@@ -44,7 +36,11 @@ def PowerMat(M, p):
 
 
 A = {strT[s]:{strT[t]:0 for t in gs} for s in gs}
+for part in gs:
+    #Generate >pi
 
+
+    #Generate special pi
 
 print("Matrix A generated")
 tMatr = PowerMat(A, 10**12-6)
