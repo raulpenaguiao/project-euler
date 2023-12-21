@@ -1,3 +1,12 @@
+#Code written on the 21/12/2023
+#For each integer vector in a 100x100x100 cube see if it has a ninteger distanc to the origin
+#If so, save it on the corresponding slot
+#For each slot, generate all triangles and compute the area
+#Area is given by Girard's theorem, that says the area of a triangle is given by the sum of its angles
+#We actually compute the angle between the normals, which gives the complementary angle
+#Runs in 1107.95 seconds
+
+
 import time
 start = time.time()
 from decimal import Decimal, getcontext
@@ -76,7 +85,6 @@ def A(i):
 tot = 0
 for i in pts:
     end = time.time()
-    print("Time elapsed ", end - start, " seconds. Starting ", math.floor(math.sqrt(i)+.5),  " - " , len(pts[i]))
     tot += A(i)
 
 print("Answer = ", tot)

@@ -45,7 +45,8 @@ Features:
  - Priority is set by the value of f, so when we reach a tuple that has some specific value, all tuples with lower values have already been visited
 
 Time:
- - 27.75s to run for $n = 1000$
+    27.75s to run for $n = 1000$
+
 ---
 
 ### Problem 138 - Special isoceles triangles
@@ -60,8 +61,10 @@ Features:
  - [Pell's equation](https://en.wikipedia.org/wiki/Pell%27s_equation) gives us solution to these equations knowing the convergents of sqrt(5)
 
 Time:
- - 0.05ms for the first 12 isoceles triangles
- - 2.7s for first 12k isoceles triangles
+    0.05ms for the first 12 isoceles triangles
+    2.7s for first 12k isoceles triangles
+
+
 ---
 
 ### Problem 141 - Investigating progressive numbers, n, which are also square
@@ -76,7 +79,7 @@ Features:
 
 
 Time: 
- - 10.5s to run until $10^{12}$
+    10.5s to run until $10^{12}$
 
 ---
 ### Problem 142 - Perfect Square Collection
@@ -85,7 +88,7 @@ Time:
 
 Features:
  - Pitagorean triples: if $f^2+g^2 = h^2$, then there are integers $r, m, n$ such that $f = r(m^2 - n^2)$, $ g = 2 r m n $ and $h=r (m^2+n^2)$, or symmetrically about $f, g$
-- Let $a^2 = x - y$, $b^2 = y - z$ and $d^2 = y + z$. These numbers satisfy the following constraints:
+ - Let $a^2 = x - y$, $b^2 = y - z$ and $d^2 = y + z$. These numbers satisfy the following constraints:
 $ b \equiv_2 d$, $d > b$, and $ a^2 + b^2, a^2 + d^2, a^2 + b^2 + d^2$ are squares.
  - We can use pitagorean triples on $a^2$, $b^2$ and $a^2+b^2$. Write $a^2 = r (m^2-n^2)$ and $b^2 = 2 r m n$, (OR switch a and b, one of these will find the minimal solution). There is also a coprimality condition but I don't care too much for that.
  - Find $d, r, m, n$ integers such that the above holds that minimize  $$ d^2\frac{2}{3} + r (m^2-n^2) - r m n $$
@@ -105,7 +108,8 @@ Time:
 - Generate first all allowed pairs (p, q) that have an integer solution above, there are $3\times 10^5$ such pairs
     then run over all p and try to find q and r that are themselves an allowed pair
 
-Time: Runs in 8.61 seconds
+Time: 
+    Runs in 8.61 seconds
 
 
 ---
@@ -120,11 +124,11 @@ Features:
  - Hash functions and dictionaries
 
 Time:
-1ms
+    1ms
 
 Notes:
-This problem could have been done much faster were it to be said how the random removal was to be done.
-I, for some reason, assumed that the random extraction of the paper was to be done uniformly over all sizes.
+    This problem could have been done much faster were it to be said how the random removal was to be done.
+    I, for some reason, assumed that the random extraction of the paper was to be done uniformly over all sizes.
 
 
 ---
@@ -135,14 +139,16 @@ I, for some reason, assumed that the random extraction of the paper was to be do
 Features:
  - Divisors of integers
 
-Code made on the 26/10/2023
-For each divisor d we count how many positive integers $k$ are there such that $d|k$, and multiply by $re(d)$.
-If $d$ is integer, this is done directly (add $i\times (N//i)$)
-if $a, b > 0$, then $a + ib$ divides all the multiples of $d(a'^2 + b'^2)$, where $d = gcd(a, b)$, $a' = a/d$, $b' = b/d$
-so for all $a', b'$ coprime, we simply sum $d a' (N//(d(a'^2 + b'^2)))$
-if $im(d) < 0$, we just copy what happens on the positive side (multiply by 2)
+Notes:
+    Code made on the 26/10/2023
+    For each divisor d we count how many positive integers $k$ are there such that $d|k$, and multiply by $re(d)$.
+    If $d$ is integer, this is done directly (add $i\times (N//i)$)
+    if $a, b > 0$, then $a + ib$ divides all the multiples of $d(a'^2 + b'^2)$, where $d = gcd(a, b)$, $a' = a/d$, $b' = b/d$
+    so for all $a', b'$ coprime, we simply sum $d a' (N//(d(a'^2 + b'^2)))$
+    if $im(d) < 0$, we just copy what happens on the positive side (multiply by 2)
 
-Time: 74.51598477363586s
+Time: 
+    74.51598477363586s
 
 ---
 ### Problem 154 - Exploring Pascal's Pyramid
@@ -155,12 +161,14 @@ Features:
  - Do rare checks first
 
 Notes:
-Code written on the 2023/11/03
-Once can compute very efficiently the largest exponent $p^t$ that divides $n!$ ($v(p, n)$ function)
-Very directly computes the exponent of 2 and 5 of binom[N, (a, b, c)] and checks if these are >= 12
-Check the fives condition before checking the twos condition
+    Code written on the 2023/11/03
+    Once can compute very efficiently the largest exponent $p^t$ that divides $n!$ ($v(p, n)$ function)
+    Very directly computes the exponent of 2 and 5 of $\binom{N}{a, b, c}$ and checks if these are >= 12
+    Check the fives condition before checking the twos condition
 
-Time: 7.8 minutes = 470 seconds
+Time: 
+    7.8 minutes
+    or 470 seconds
 
 ---
 ### Problem 155 - Counting Capacitor Circuits
@@ -172,15 +180,17 @@ Features:
  - Rational structure
 
 Notes:
-Code written on the 2023/11/08
-Recursively checks what are the numbers that can be obtained for capacity structures
-for precision reasons we use precise rational structure
+    Code written on the 2023/11/08
+    Recursively checks what are the numbers that can be obtained for capacity structures
+    for precision reasons we use precise rational structure
 
-Time: 102.44 seconds
+Time: 
+    102.44 seconds
 
 
 ---
 ### Problem 156 - Counting Digits
+3rd November 2023
 
 **python**
 
@@ -189,12 +199,11 @@ Features:
  - Recursion
 
 Notes:
-Code written on the 2023/11/03
+    Use a divide and conquer approach. if we know $f(n\times 10^s-1, d)$ we can compute $f((n\times 10+t)\times 10^{s-1} - 1, d)$ very easily
+    Only divide when there is any chance there is a solution in the interval.
 
-Use a divide and conquer approach. if we know $f(n\times 10^s-1, d)$ we can compute $f((n\times 10+t)\times 10^{s-1} - 1, d)$ very easily
-Only divide when there is any chance there is a solution in the interval.
-
-Time: 0.023s
+Time: 
+    0.023s
 
 ---
 ### Problem 158 - Lexicographical neighbours
@@ -208,10 +217,12 @@ Notes:
 Code on the 13/11/2023
 Formula for $p(n) = (2^n - n - 1)\times \binom{26}{n}$
 
-Time: 0.0000 seconds
+Time: 
+    0.0000 seconds
 
 ---
 ### Problem 161 - Triominoes
+1st December 2023
 
 **python**
 
@@ -221,14 +232,15 @@ Features:
 
 
 Notes:
-#Code written in on 2023/12/01
-#In each partially filled board, we identify the uppermost tile to the left that is free, and try to put any tile possible there
-#We use memoisation to make sure we dont evaluate a partially filled board twice
+    In each partially filled board, we identify the uppermost tile to the left that is free, and try to put any tile possible there
+    We use memoisation to make sure we dont evaluate a partially filled board twice
 
-Time: 593 seconds
+Time: 
+    593 seconds
 
 ---
 ### Problem 165 - Intersections
+13th November 2023
 
 **python**
 
@@ -238,16 +250,17 @@ Features:
  - Rational class
 
 Notes:
-Code written on the 13/11/2023
-For four points, computes four determinantes to check that the points form a convex hull in the determined order
-In this case, we compute the desired intersection point
-We need to rule out the case of several lines intersecting at the same point
-For that we develop a rational data class to be able to check if a point is already the intersection
+    For four points, computes four determinantes to check that the points form a convex hull in the determined order
+    In this case, we compute the desired intersection point
+    We need to rule out the case of several lines intersecting at the same point
+    For that we develop a rational data class to be able to check if a point is already the intersection
 
-Time: 32.2 seconds
+Time: 
+    32.2 seconds
 
 ---
 ### Problem 170 - Pandigital Concatenating Products
+7th December 2023
 
 **python**
 
@@ -256,12 +269,13 @@ Features:
  - GCD and divisors
 
 Notes:
-Code written in 2023/12/07
-Generates and orders permutations
-For each permutation, breaks up into pieces and computes the gcd
-For each divisor, tests if this can be the first integer
+    Generates and orders permutations
+    For each permutation, breaks up into pieces and computes the gcd
+    For each divisor, tests if this can be the first integer
 
-Time: 31.29 seconds until finding a solution, 10s of which is generating all permutations
+Time: 
+    31.29 seconds
+    10s of which is generating all permutations
 
 
 ---
@@ -799,6 +813,28 @@ Time:
 11.77 seconds
 
 ---
+### Problem 332 - Spherical Triangles
+21st December 2023
+
+**python**
+
+Features:
+ - Spherical geometry
+ - Area of a triangle
+ - Computational geometry
+
+Notes:
+    For each integer vector in a 100x100x100 cube see if it has a ninteger distanc to the origin
+    If so, save it on the corresponding slot
+    For each slot, generate all triangles and compute the area
+    Area is given by Girard's theorem, that says the area of a triangle is given by the sum of its angles
+    We actually compute the angle between the normals, which gives the complementary angle
+
+Time:
+    1107.95 seconds
+
+
+---
 ### Problem 325 - Stone Game II
 8th November 2023
 
@@ -806,12 +842,12 @@ Time:
 
 Features:
  - Game theory
- - Integer points ni a polyhedron
+ - Integer points in a polyhedron
 
 Notes:
-The set of losing positions are the integet points $(x, y)$ such that $x\neq y$ that are inside the cone $x/phi < y < x*phi$
-The desired sum can be extended to counting the number of integer points inside a 3 dimentional polytope
-We compute this polytope here, runs in very few time. Afterwards we need to use sage to compute the number of integer pts
+    The set of losing positions are the integet points $(x, y)$ such that $x\neq y$ that are inside the cone $x/phi < y < x*phi$
+    The desired sum can be extended to counting the number of integer points inside a 3 dimentional polytope
+    We compute this polytope here, runs in very few time. Afterwards we need to use sage to compute the number of integer pts
 
 Time:
 5.084355 seconds
@@ -827,9 +863,9 @@ Features:
  - Dictionary
 
 Notes:
-Fixed an arbitrary limit and computed all the sums of squares and cubes up to this limit
-Memorised these sums in dictionaries to count occurrences
-Limit set to $10^9$ magically words
+    Fixed an arbitrary limit and computed all the sums of squares and cubes up to this limit
+    Memorised these sums in dictionaries to count occurrences
+    Limit set to $10^9$ magically words
 
 Time:
 27.26 seconds
@@ -846,9 +882,9 @@ Features:
  - Markov chain
 
 Notes:
-First assumption that there are infinitely many licence plates and all of them exist infinitely many times
-This problem can be modeled with a markov chain, on $1+500\times 2$ states, and we want to compute the exit time from the $500 \times 2$ transient component.
-This component happens to be upper triangular, so invertion is specially easy an ddoes not need Gaussian elimination.
+    First assumption that there are infinitely many licence plates and all of them exist infinitely many times
+    This problem can be modeled with a markov chain, on $1+500\times 2$ states, and we want to compute the exit time from the $500 \times 2$ transient component.
+    This component happens to be upper triangular, so invertion is specially easy an ddoes not need Gaussian elimination.
 
 
 Time:
@@ -866,10 +902,10 @@ Features:
  - Prime 
 
 Notes:
-BFS on the graph constructed in the problem, where the BFS is done with a priority queue
-We want to visit the lowest neighbour that we havent visited yet
-We check all the neighbours that we have not visited, add them to queue
-Remember how high is the number where you came from (largest in the whole path)
+    BFS on the graph constructed in the problem, where the BFS is done with a priority queue
+    We want to visit the lowest neighbour that we havent visited yet
+    We check all the neighbours that we have not visited, add them to queue
+    Remember how high is the number where you came from (largest in the whole path)
 
 
 Time:
@@ -887,9 +923,9 @@ Features:
  - Fibbonacci periods
 
 Notes:
-We compute each $F_n(x) mod p^e$ separately for each power divisor of $15!$
-Note that each power divisor of $15!$ will not be larger than $2500$, so the fibonacci period will not be larger than $2500^2$
-We use the fact that fibbs is periodic as well as the powers are periodic to compress the sum as much as possible, will be the size at most $2500^2$
+    We compute each $F_n(x) mod p^e$ separately for each power divisor of $15!$
+    Note that each power divisor of $15!$ will not be larger than $2500$, so the fibonacci period will not be larger than $2500^2$
+    We use the fact that fibbs is periodic as well as the powers are periodic to compress the sum as much as possible, will be the size at most $2500^2$
 
 Time:
 0.1493 seconds
