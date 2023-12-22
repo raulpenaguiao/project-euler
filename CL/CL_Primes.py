@@ -1,6 +1,5 @@
 import math
-import CL_Arithmetics as CA
-
+from .CL_Arithmetics import PowerMod
 
 def Primes(N):
     Nsqrt = math.floor(math.sqrt(N))+2
@@ -77,7 +76,7 @@ def MRTest(n, r):
     while (d%2 == 0):
         d //= 2
         e += 1
-    a = CA.PowerMod(r, d, n)
+    a = PowerMod(r, d, n)
     if (a == 1):
         return True
     b = (a*a)%n

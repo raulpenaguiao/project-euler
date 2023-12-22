@@ -7,7 +7,7 @@
 import time
 start = time.time()
 import math
-from CL.CL_Primes import Primes, PrimeFactorization
+from ...CL.CL_Primes import Primes, PrimeFactorization
 
 def DivLimited(fc, LIM):
     if fc == []:
