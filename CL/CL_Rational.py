@@ -72,6 +72,7 @@ class Rational:
         self.denominator = self.denominator * rat.denominator
         self.reduce()
     
+
     @staticmethod
     def Plus(r1, r2):
         ans = Rational()
@@ -80,12 +81,13 @@ class Rational:
         ans.reduce()
         return ans
 
+    def __add__(self, rat):
+        return Rational.Plus(self, rat)
 
     def multiply(self, rat):
         self.numerator = self.numerator*rat.numerator
         self.denominator = self.denominator*rat.denominator
         self.reduce()
-    
 
     @staticmethod
     def Times(r1, r2):
@@ -96,11 +98,20 @@ class Rational:
         return ans
     
     
+    def __sub__(self, rat):
+        return Rational.Plus(self, Rational.Times(rat, Rational(-1)))
+    
+    
+    def __mul__(self, rat):
+        return Rational.Times(self, rat)
+    
     def Reverse(r1):
         ans = Rational(r1.denominator, r1.numerator)
         ans.reduce()
         return ans
-
+    
+    def __truediv__(self, rat):
+        return Rational.Times(self, Rational.Reverse(rat))
 
     def toFloat(r):
         return r.numerator/r.denominator
