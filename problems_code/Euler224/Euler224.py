@@ -1,8 +1,8 @@
 #Code written on the 12/12/2023
+#Will find divisors up until 25_000_000
+#Expected 410208.2777810097 seconds = 5 days
+#Started to run at 10h20 on Tuesday 2nd Jan
 
-
-#Started to run at 6h10 on Thursday
-#Was still runing at 6h on monday (about 100h running!)
 
 import time
 start = time.time()
@@ -61,7 +61,7 @@ def g_naive(L):
                     ans += 1
     return ans 
 
-L = 75*10**5
+L = 75*10**6
 print("Answer = ", g(L))
 #print("Answer naive = ", g_naive(L))
 end = time.time()
