@@ -1,5 +1,6 @@
 
 import math
+from decimal import Decimal
 
 def gcd(a, b):
     if a < 0:
@@ -116,6 +117,8 @@ class Rational:
     def toFloat(r):
         return r.numerator/r.denominator
     
+    def toDecimal(r):
+        return Decimal(r.numerator)/Decimal(r.denominator)
 
     def SquareRoot(self, PREC = 10**(-6)):
         a = math.sqrt(self.numerator)
