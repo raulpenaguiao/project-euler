@@ -29,7 +29,7 @@ LIM = 10
 
 
 for k in range(1, LIM+1):
-    ans += Proba(k)
+    ans += Proba(k)*k
 
 print("Answer = ", ans)
 end = time.time()
