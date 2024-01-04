@@ -755,6 +755,46 @@ Time:
 
 
 ---
+### Problem 285 - 
+4th January 2024
+
+**python**
+
+Features:
+ - Computational Geometry
+ - Circle section area formula
+ - Triangle area formula
+ - Quadratic formula
+ - Probability as areas
+
+Notes:
+Sampling a and b is sampling a point in the unit square
+The probability is the area of this square intersected with an anular region
+Compute numerically for each k the angle of the circular sections, minus a triangle, gives the desired area
+
+Time:
+4.320313692 seconds
+
+---
+### Problem 286 - 
+4th January 2024
+
+**python**
+
+Features:
+ - Dynamic programing
+ - Binary search
+
+Notes:
+DP to fing the probability of hitting 20 shots for a given q
+Binary search to find que desired q
+Note that Shot(50) = 0.04 and Shot(100) << 0.02, so we only need to do binary search there
+The function is decreasing in this part, so binary search will be adapted accordingly
+
+Time:
+0.11953878402 seconds
+
+---
 ### Problem 287 - Quadtree Encoding (a Simple Compression Algorithm)
 14th December 2023
 
@@ -1379,3 +1419,20 @@ Includes C++ code that does not work
 
 Time:
 26s
+
+
+---
+### Problem xxx - 
+dayth Month YYYY
+
+**language**
+
+Features:
+ - Feature 1
+ - Feature 1
+
+Notes:
+Note 1
+
+Time:
+x seconds

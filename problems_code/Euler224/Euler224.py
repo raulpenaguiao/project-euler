@@ -2,7 +2,7 @@
 #Will find divisors up until 25_000_000
 #Expected 410208.2777810097 seconds = 5 days
 #Started to run at 10h20 on Tuesday 2nd Jan
-
+#After less than two days running we are already past half. It looks like it will be running on the weekend, and monday morning I will have a surprise
 
 import time
 start = time.time()
