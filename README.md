@@ -6,12 +6,12 @@ This is where I will leave the code related to project euler
 For python, to make sure we have the right classes on the code, we have to run in the uppermost folder (project-euler) the following command
 
 ```bash
-python3 -m project_euler.problems_code.EulerXXX.EulerXXX
+python3 -m project-euler.problems_code.EulerXXX.EulerXXX
 ```
 
 or
 ```bash
-python3 -m project_euler.archive.EulerXXX.EulerXXX
+python3 -m project-euler.archive.EulerXXX.EulerXXX
 ```
 This guarantees that all modules are correctly loaded.
 Note that you should not type the extention .py of the file
