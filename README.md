@@ -675,7 +675,31 @@ Time: 2.69ms, blazingly fast
 
 
 ---
-### Problem 247 - 
+### Problem 240 - Top Dice
+04th January 2024
+
+**python**
+
+Features:
+ - Combinatorics
+ - Generate partitions
+
+Notes:
+First generate all possible decreasing lists of ten integers that sum to 70
+For each such list, we can place them in any of the 20 positions (divide by suitable binomial coef)
+Careful that there may be some copies of the lowest term of this list in the other positions, so take care of that in the combinatorics
+Precompute factorials
+Function "PermutationOfLists" gives the number of different lists that are permutations of a given list
+Function "ExtentionPermutations" computes, for a given list, the number of ways of filling out all 20 positions with this list and weakly lower numbers
+Possible improvements:
+ - Precompute binomials
+
+Time:
+0.582 seconds
+
+
+---
+### Problem 247 - Squares Under a Hyperbola
 18th December 2023
 
 **python**
@@ -736,7 +760,28 @@ Make sure that when saving a key to the dictionary, we save the integer (so we d
 
 Times:
 476s (8 minutes)
+---
+### Problem 260 - Stone Game
+04th January 2024
 
+**python**
+
+Features:
+ - Brute Force
+ - Game theory
+ - Memoisation
+
+Notes:
+This is a simple brute force program and memoisation.
+For each losing strategy, we can determine that all states that reach this point are winning strategies
+So run increasingly in the amount of stones in a pile, when finding a losing strategy mark all coresponding winning strategies
+Possible optimizations:
+ - just run for a <= b <= c, would get a *6 improvement. 
+ - Use C++, would get a 10* improvement
+ - Cap the loop on k to the maximum value automatically, would get a *2 improvement
+
+Time:
+780 seconds
 
 ---
 ### Problem 276 - Primitive Triangles
@@ -755,7 +800,7 @@ Time:
 
 
 ---
-### Problem 285 - 
+### Problem 285 - Pythagorean Odds
 4th January 2024
 
 **python**
@@ -776,7 +821,7 @@ Time:
 4.320313692 seconds
 
 ---
-### Problem 286 - 
+### Problem 286 - Scoring Probabilities
 4th January 2024
 
 **python**
