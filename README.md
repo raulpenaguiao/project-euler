@@ -783,6 +783,28 @@ Possible optimizations:
 Time:
 780 seconds
 
+
+---
+### Problem 266 - Pseudo Square Root
+05th January 2024
+
+**python**
+
+Features:
+ - Split in the middle
+ - Binary search
+ - Prime sieving
+
+Notes:
+Generates all primes, splits the set of primes in two and computes all the products of primes in each set (of size 21, so there are about 2M products)
+Sort each set. For each product p of the first prime set, find largest product q of the second prime set that does not exceed an upper bound
+This bound is cooked up so that $p\times q \leq \sqrt{product of primes}$
+This search uses binary search.
+
+Time:
+14.7169032 seconds
+
+
 ---
 ### Problem 276 - Primitive Triangles
 28th November 2023
@@ -1464,6 +1486,7 @@ Includes C++ code that does not work
 
 Time:
 26s
+
 
 
 ---
