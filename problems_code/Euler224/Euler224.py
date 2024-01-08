@@ -3,6 +3,9 @@
 #Expected 410208.2777810097 seconds = 5 days
 #Started to run at 10h20 on Tuesday 2nd Jan
 #After less than two days running we are already past half. It looks like it will be running on the weekend, and monday morning I will have a surprise
+#Oh no I miscounted!! It's going to be 50 days...
+#There's gotta be a better way!
+
 
 import time
 start = time.time()
