@@ -70,7 +70,7 @@ def Divisors(n, primes):
     return Divisors_FC(fc)
 
 
-def MRTest(n, r):
+def MRTest(n, r, verbose = False):
     d = n-1
     e = 0
     while (d%2 == 0):
@@ -78,14 +78,20 @@ def MRTest(n, r):
         e += 1
     a = PowerMod(r, d, n)
     if (a == 1):
+        if verbose:
+            print("Power is already one")
         return True
     b = (a*a)%n
     while not(b == 1) and e > 0:
         a = b
         b = (a*a)%n
         e -= 1
+    if verbose:
+        print("e = ", e, ", a = ", a, ", n = ", n)
     return (e > 0 )and (a+1 == n)
-def MillerRabin(n):
+
+
+def MillerRabin(n, verbose = False):
     if n == 0 or n == 1:
         return False
     if n < 0:
@@ -102,39 +108,45 @@ def MillerRabin(n):
         return n == 11
     if n % 13 == 0:
         return n == 13
-    if not MRTest(n, 2):
+    if verbose:
+        print(n, " has survived to the easy divisibility tests.")
+    if not MRTest(n, 2, verbose):
         return False
+    if verbose:
+        print(n, " has survived test 2.")
     if n < 2047:
         return True
-    if not MRTest(n, 3):
+    if not MRTest(n, 3, verbose):
         return False
+    if verbose:
+        print(n, " has survived test 3.")
     if n < 13733653:
         return True
-    if not MRTest(n, 5):
+    if not MRTest(n, 5, verbose):
         return False
     if n < 25326001:
         return True
-    if not MRTest(n, 7):
+    if not MRTest(n, 7, verbose):
         return False
     if n < 3215031751:
         return True
-    if not MRTest(n, 11):
+    if not MRTest(n, 11, verbose):
         return False
     if n < 2152302898747:
         return True
-    if not MRTest(n, 13):
+    if not MRTest(n, 13, verbose):
         return False
     if n < 3474749660383:
         return True
-    if not MRTest(n, 17):
+    if not MRTest(n, 17, verbose):
         return False
     if n < 341550071728321:
         return True
-    if not MRTest(n, 19) and not MRTest(n, 23):
-        return False
-    if n < 341550071728321:
-        return True
-    if not MRTest(n, 23):
+    if not MRTest(n, 19, verbose) or not MRTest(n, 23, verbose):
         return False
     if n < 3_825_123_056_546_413_051:
+        return True
+    if not MRTest(n, 29, verbose) or not MRTest(n, 31, verbose) or not MRTest(n, 37, verbose):
+        return False
+    if n < 18_446_744_073_709_551_616:
         return True

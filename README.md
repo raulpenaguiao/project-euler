@@ -720,6 +720,31 @@ For the search, we use a priority queue to only expore a square when no larger s
 Time:
 4.39 s
 
+
+
+
+---
+### Problem 249 - 
+08th January 2024
+
+**python**
+
+Features:
+ - Exponential constructions
+ - Dynamic programming
+ - Sums of sests with bounded size
+ - Primes sieving
+
+Notes:
+The code generates a list sprimes, such that sprimes[i] = number of subsets with sum i
+The way this generation is done is fast because we only record the number of such sums, which allows this to have size |sprimes|*maxsum ~ 1000 * 1M
+We add all the values of this list for prime indices buy sieving a larger set of primes
+We could use MillerRabin instead, but I found an error in my MR code so I will need to take care of that
+
+Time:
+48.72416 seconds
+
+
 ---
 ### Problem 258 - A Lagged Fibonacci Sequence
 12th December 2023
