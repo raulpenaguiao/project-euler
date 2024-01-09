@@ -78,16 +78,16 @@ def MRTest(n, r, verbose = False):
         e += 1
     a = PowerMod(r, d, n)
     if (a == 1):
-        if verbose:
-            print("Power is already one")
+        #if verbose:
+        #    print("Power is already one")
         return True
     b = (a*a)%n
     while not(b == 1) and e > 0:
         a = b
         b = (a*a)%n
         e -= 1
-    if verbose:
-        print("e = ", e, ", a = ", a, ", n = ", n)
+    #if verbose:
+    #    print("e = ", e, ", a = ", a, ", n = ", n)
     return (e > 0 )and (a+1 == n)
 
 
@@ -108,31 +108,31 @@ def MillerRabin(n, verbose = False):
         return n == 11
     if n % 13 == 0:
         return n == 13
-    if verbose:
-        print(n, " has survived to the easy divisibility tests.")
+    #if verbose:
+    #    print(n, " has survived to the easy divisibility tests.")
     if not MRTest(n, 2, verbose):
         return False
-    if verbose:
-        print(n, " has survived test 2.")
-    if n < 2047:
+    #if verbose:
+    #    print(n, " has survived test 2.")
+    if n < 2_047:
         return True
     if not MRTest(n, 3, verbose):
         return False
-    if verbose:
-        print(n, " has survived test 3.")
-    if n < 13733653:
+    #if verbose:
+    #    print(n, " has survived test 3.")
+    if n < 1_373_653:
         return True
     if not MRTest(n, 5, verbose):
         return False
-    if n < 25326001:
+    if n < 25_326_001:
         return True
     if not MRTest(n, 7, verbose):
         return False
-    if n < 3215031751:
+    if n < 3_215_031_751:
         return True
     if not MRTest(n, 11, verbose):
         return False
-    if n < 2152302898747:
+    if n < 2_152_302_898_747:
         return True
     if not MRTest(n, 13, verbose):
         return False
