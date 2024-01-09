@@ -50,6 +50,15 @@ def PrimeFactorization(n, primes):
 #print(PrimeFactorization(30, [2, 3, 5, 7]), " = [[2, 1], [3, 1], [5, 1]]")
 #print("Prime factorisation ", PrimeFactorization(22, [2, 3, 5, 7]), " = [[2, 1], [11, 1]]")
 
+def EulerPhi(N):
+    phi = [i-1 for i in range(N+1)]
+    phi[0] = 0
+    phi[1] = 1
+    for k in range(2, N):
+        for j in range(2*k, N+1, k):
+            phi[j] -= phi[k]
+    return phi
+
 
 def Divisors_FC(fc):
     if fc == []:

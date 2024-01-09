@@ -22,6 +22,10 @@ def BinarySearch(lst, l, val, verbose = False):
     return imin
 
 
+def BinaryFind(lst, l, val, verbose = False):
+    ind = BinarySearch(lst, l, val, verbose)
+    return ind >= 0 and ind < l and lst[ind] == val
+
 
 if not BinarySearch([i for i in range(10)], 10, 4.5) == 4:
     BinarySearch([i for i in range(10)], 10, 4.5, True)

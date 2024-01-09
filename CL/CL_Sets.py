@@ -4,8 +4,7 @@ class Set:
             self.bag = {}
             self.size = 0
             for el in kwargs["elements"]:
-                self.bag[el] = True
-                self.size += 1
+                self.append(el)
         else:
             print("EEROOOR ", kwargs)
     
@@ -18,7 +17,19 @@ class Set:
                 ans.size += 1
         return ans
     
-    
+
+    def append(self, el):
+        if not el in self.bag:
+            self.size += 1
+            self.bag[el] = True
+
+    def Intersection(self, other):
+        ls = []
+        for el in self.bag:
+            if el in other.bag:
+                ls += [el]
+        return Set(elements = ls)
+
     def Subsets(self):
         ans = [Set(elements = [])]
         for el in self.bag:
@@ -34,10 +45,19 @@ class Set:
     def PickElement(self):
         for el in self.bag:
             return el
-        raise Exception("The set is empty")
+        raise Exception("EMPTYSET: Cannot pick an element, the set is empty")
     
-    def IsEmpty(self):
+
+    def Select(self, cond):
+        ans = [Set(elements = [])]
         for el in self.bag:
+            if cond(el):
+                ans.append(el)
+        return ans
+
+
+    def IsEmpty(self):
+        for _ in self.bag:
             return False
         return True
     

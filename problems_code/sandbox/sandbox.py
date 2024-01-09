@@ -1,18 +1,8 @@
 import time
 start = time.time()
-from ...CL.CL_Primes import Primes, MillerRabin
+from ...CL.CL_Primes import Primes, MillerRabin, EulerPhi
 
-s = 10**7
-SIEVE = [False for _ in range(s+1)]
-PRIMES = Primes(s)
-for p in PRIMES:
-    SIEVE[p] = True
-for i in range(s+1):
-    if not SIEVE[i] == MillerRabin(i):
-        print("MR = ", MillerRabin(i, True))
-        print("SIEVE = ", SIEVE[i])
-        print(i)
-
-
+p = EulerPhi(1000)
+print(p[1:40])
 end = time.time()
 print("Time elapsed ", end - start, " seconds")
