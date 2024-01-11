@@ -721,7 +721,40 @@ Time:
 4.39 s
 
 
+---
+### Problem xxx - 
+11th January 2024
 
+**python**
+
+Features:
+ - Euler Totioent function
+ - Divisors function
+ - Cartesian product
+ 
+
+Notes:
+This function finds all the numbers $n$ that have $\phi(n)$
+Uses the fact that if $\phi(n) = N$, then $\prod_i \phi(p_i^{a_i}) = N$ is a factorisation of $N$
+So we generate all factorisations of $N$ and for each factor we find all the ways of writting it as $\phi(p_i^{a_i})$ for some prime $p_i$ (called Euler decs).
+An optimization implemented is that we only generate factorisations using factors that do accept some called Euler dec.
+Do not forget that $1$ can also be a factor in the factorisation. We only need to include this factor once because there is only one Euler dec that interests us.
+Function DCPPrime
+   Computes how many ways we can write a number $k$ as phi of a prime number. That is $k = p^a - p^{a-1}$
+   The case $p = 2$ has to be dealt separately
+   For each possible exponent $a$ we know $p$ is close and larger than $\sqrt[a]{k}$. We hope it's precisely the ceiling
+   We use Miller Rabin for primality test
+Function Product Partitions
+   Computes all factorisations, different ways of writting a number $N$ as a product of different numbers
+   It accepts a dictionary, and we will ignore all factors that are keys in this dictionary
+Function AllAreDistinct, DeleteCopies, CartesianProduct manipulate lists
+Function FromPrimeFactToNum converts a prime factorisation into the number it represents
+   Example [[2, 3], [3, 1]] -> 24
+Function ListNumPhiIsN is the meat of the code. For an input $N$ creates all numbers $n$ such that $\phi(n) = N$.
+   For each possible factorisation where each factor can be written
+
+Time:
+12.88 seconds
 
 ---
 ### Problem 249 - 
@@ -844,6 +877,45 @@ There is the following formula $F(n) - F(n-1) = \sum_{d|n} mu(n/d) G(d)$ accordi
 
 Time:
 19.13 seconds
+
+
+
+---
+### Problem 281 - Pizza Toppings
+10th January 2024
+
+**python**
+
+Features:
+ - Euler Totient function
+ - Burnside's lemma
+ - Combinatorics of set partitions
+
+Notes:
+Burnside lemma says that the number of orbits of a group action is given by a simple sum.
+In this case, the set of pizza toppings $X_{m, n}$ has an action of the cyclic group $C_{mn}$, we wish to count $X_{m, n}/_{C_{mn}}$
+Burnside's lemma predicts that $|X_{m, n}/_{C_{mn}}| * |C_{m n}| = \sum_{g\in C_{mn}} |X_{m, n}^g|$. $|X_{m, n}/_{C_{mn}}|$ is the number that we are after.
+
+Counting $|X_{m, n}|$ is easy with a combinatorial argument. 
+    Labelling all the different toppings we count $(mn)!$ topping distributions of $mn$ toppings,
+    but permuting each subset of toppings that have the same flavour gives a class of size $n!$ topping distributions that we consider the same
+    so $|X_{m, n}| = \frac{(mn)!}{(n!)^m}$
+To count the size of the stabilizer, let $e$ be the rotation given by $\frac{2 \pi}{mn}$, a generator of $C_{mn}$, and $g = e^k$.
+A pizza topping is stabilized by $g$ if and only if it is stabilized by $e^{gdc(k, mn)}$. Let $d = gdc(k, mn)$.
+Because of the stabilizer property, there are $d$ groups of slices, each of size $t = mn/d$, that have the same topping.
+Counting such toppings is equivalent to counting
+   the number of topping distributions with $m$ different toppings on $d$ slices,
+   where we want each topping to be in $d/m = n/t$ different slices. 
+Thus $t$ has to be a divisor of $n$, in which case the number is $|X_{m, n/t}| = \frac{(mn/t)!}{((n/t)!)^m}$
+We get the following formula for $f(m, n) = \sum_{t | n} \sum_{k = 1, \ldots , mn :  gcd(k, mn) = mn/t} |X_{m, n/t}|$
+Finally, we note that the number of indices $k = 1, \ldots , mn$ for which $gcd(k, mn) = mn/t$ for a fixed $t$ is $\phi(t)$
+   as these are given by $k = mn/t \times z$ where $z\perp t$ is an integer in $1, \ldots t$.
+
+A note on finding the upper bound. We know that $f(m, 1) = m!$, so we do not need to explore any $m >= 20$
+
+Time:
+Runs in 3 ms
+
 
 
 ---
