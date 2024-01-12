@@ -1,6 +1,6 @@
 #Code written on the 2024/01/12
 # 
-# It does not do what we want it to do
+# It does not do what we want it to do. It should work but I assume there is some major bug or something...
 #Runs in 50 seconds
 
 
@@ -75,19 +75,19 @@ sm = sum(m)
 def AllSolutions(M):
     possBase = [[] for _ in range(5)]
     for index in range(5):
-        for bindex in range(1, 1 + m[index]):
-            aindex = M.Reverse()*Rational(n[index]*bindex, m[index])
+        frac = M.Reverse()*Rational(n[index], m[index])
+        frac.reduce()
+        print(frac.denominator, m[index]//frac.denominator)
+        for bindex in range(frac.denominator, 1 + m[index], frac.denominator):
+            aindex = frac*Rational(bindex)
             aindex.reduce()
-            if index == 0 and (bindex == 295 or bindex == 36):
-                print(aindex)
-            if aindex.isInteger():# and Rational(0) < aindex:# and aindex <= Rational(n[index]):
-                possBase[index].append([aindex.numerator, bindex])
+            possBase[index].append([aindex.numerator, bindex])
     return [len(k) for k in possBase]
 
 
-d = gcd(1476*640, 1475*5248)
-print(d)
-print(1475*5248//d, 1476*640//d)
+#d = gcd(1476*640, 1475*5248)
+#print(d)
+#print(1475*5248//d, 1476*640//d)
 print(AllSolutions(Rational(1476, 1475)))
 
 
