@@ -16,6 +16,9 @@ class Rational:
         self.denominator = b
         self.reduced = False
 
+    def isInteger(self):
+        self.reduce()
+        return self.denominator == 1 or self.denominator == -1
 
     def __repr__(self):
         return self.__str__()
@@ -86,6 +89,7 @@ class Rational:
         return Rational.Plus(self, rat)
 
     def multiply(self, rat):
+        self.reduced = False
         self.numerator = self.numerator*rat.numerator
         self.denominator = self.denominator*rat.denominator
         self.reduce()
