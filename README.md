@@ -722,7 +722,7 @@ Time:
 
 
 ---
-### Problem xxx - 
+### Problem 248 - Euler Totient Function Equals 13!
 11th January 2024
 
 **python**
@@ -757,7 +757,7 @@ Time:
 12.88 seconds
 
 ---
-### Problem 249 - 
+### Problem 249 - Prime subset sums
 08th January 2024
 
 **python**
@@ -977,6 +977,25 @@ Time:
 331 seconds
 
 
+
+---
+### Problem 291 - Panaitopol Primes
+16th January 2024
+
+**python**
+
+Features:
+ - Miller Rabin
+
+Notes:
+The panaitopol primes are precisely the ones of the form $n^2 + (n+1)^2$
+I dont even know why, just found that fact on the internet
+We search for $n$ until $~50M$, and use Miller Rabin
+
+
+Time:
+592 seconds
+
 ---
 ### Problem 300 - Protein Folding
 3rd November 2023
@@ -997,6 +1016,29 @@ Possible optimizations: the number of bounds of a protein on a path is the
  - stop considering a protein when it has already gotten the maximal nubmer of bonds
 
 Time: 255 seconds
+
+
+
+
+---
+### Problem 303 - Multiples with small digits
+16th January 2016
+
+**python**
+
+Features:
+ - Prediction of values from smaller cases
+
+Notes:
+We generate all the numbers with digits $0$, $1$, $2$.
+For each such number, we see if it is a multiple of one of the numbers between $1$ and $10000$
+We regularly shrink the list of missing numbers, so numbers that have a low 012 multiple are not hindering further computations.
+On a second run where I use the fact that $\frac{f(9999)}{9999} = 1111333355557778$  (this can be guessed by the values of $999$, $99$ and $9$)
+
+
+Time:
+Runs in 2745.782 seconds without predicting the value of $9999$
+Runs in 33.9 seconds with prediction
 
 ---
 ### Problem 304 - Primonacci
