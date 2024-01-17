@@ -41,7 +41,7 @@ def InverseMod(a, m):
     s, x, y = ExtendedGCD(a, m)
     if not s == 1:
         raise Exception("Numbers must be coprime")
-    return (x%m + m)%m
+    return x%m
 
 
 def ChineseRemainder(lst):
