@@ -1,3 +1,16 @@
+#Code written in 2024/01/18
+#This was really a tough nut to crack. I believe the hardest problem in PE that I have solved. For sure the one that took the most time from me.
+#I tried a bunch of strategies, like meet in the middle and creating sum sets that sum in a bounded target
+#I came across a really nice fact when searching for this problem on the net (kudos to  [Setphan Brumme](https://euler.stephan-brumme.com/152/) for pointing it out).
+#I don't usually search for ideas on the internet and if I do it is often on [Project Euler chat](projecteuler.chat)
+#The idea presented there is that for you to clear primes from the denominator, you have to use denominators with this prime.
+#This clears all primes that occur once, and the ones that occur more than once can be tested individually to find all the sums that clear the denominators
+#To be careful that some numbers are multiples of different large primes (ex 35=5*7) so make sure you test it on only one prime
+#To be careful as well on the meet in the middle strategy that when we find a hit, there may be another term just behind the hit that should be counted. This makes a huge difference!
+#The roller coaster of this problem proved to be extremely interesting but frustrating...
+#Code runs in  2.509976 seconds
+
+
 import time
 start = time.time()
 from decimal import Decimal, getcontext 
@@ -79,7 +92,6 @@ for i in range(floor(sqrt(LIM))+1, LIM+1):
         sumsToAppend = SumsWithListPrime([Rational(1, k*k) for k in range(i, LIM+1, i)], i)
         if len(sumsToAppend) > 1:
             possibleSums.append(sumsToAppend)
-            print(i, possibleSums[-1])
 for i in range(2, LIM+1):
     flag = True
     for p in bigPrimes:
@@ -88,7 +100,6 @@ for i in range(2, LIM+1):
     if flag:
         lol += 1
         possibleSums.append([Decimal(0), Decimal(1)/Decimal(i*i)])
-        print(i, possibleSums[-1])
 
 
 totalIters = 1
@@ -103,14 +114,12 @@ for p in possibleSums:
         break
 possibleSums1 = possibleSums[:mdl]
 possibleSums2 = possibleSums[mdl:]
-print(possibleSums2[0])
 
 
 ms1 = MegaSums(possibleSums1)
 ms2 = MegaSums(possibleSums2)
 ms1.sort()
 ms2.sort()
-print(len(ms1), " - ", len(ms2))
 
 l = len(ms1)
 lol = 0
@@ -119,10 +128,8 @@ for item in ms2:
     if TARG - PREC < item + ms1[v] < TARG + PREC:
         lol += 1
         #count how many other items satisfy this prop
-        print(item, ms1[v], item + ms1[v])
         v -= 1
         while TARG - PREC < item + ms1[v] < TARG + PREC:
-            print(item, ms1[v], item + ms1[v])
             v -= 1
             lol += 1
 

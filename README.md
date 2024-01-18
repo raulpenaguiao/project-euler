@@ -131,6 +131,40 @@ Notes:
     I, for some reason, assumed that the random extraction of the paper was to be done uniformly over all sizes.
 
 
+
+
+
+---
+### Problem xxx - 
+18th January 2024
+
+**python**
+
+Features:
+ - Miller Rabin
+ - Meet in the middle
+ - Set of sums
+ - Set of sums within interval
+ - Rationals class
+ - Divisibility
+
+Notes:
+This was really a tough nut to crack. I believe the hardest problem in PE that I have solved. For sure the one that took the most time from me.
+I tried a bunch of strategies, like meet in the middle and creating sum sets that sum in a bounded target
+I came across a really nice fact when searching for this problem on the net (kudos to  [Setphan Brumme](https://euler.stephan-brumme.com/152/) for pointing it out).
+I don't usually search for ideas on the internet and if I do it is often on [Project Euler chat](projecteuler.chat)
+The idea presented there is that for you to clear primes from the denominator, you have to use denominators with this prime.
+This clears all primes that occur once, and the ones that occur more than once can be tested individually to find all the sums that clear the denominators
+To be careful that some numbers are multiples of different large primes (ex 35=5*7) so make sure you test it on only one prime
+To be careful as well on the meet in the middle strategy that when we find a hit, there may be another term just behind the hit that should be counted. This makes a huge difference!
+The roller coaster of this problem proved to be extremely interesting but frustrating...
+
+Time:
+2.509976 seconds seconds
+
+
+
+
 ---
 ### Problem 153 - Investigating Gaussian Integers
 
@@ -1625,7 +1659,6 @@ Includes C++ code that does not work
 
 Time:
 26s
-
 
 
 ---
