@@ -1232,6 +1232,30 @@ Sorting takes $n \log n = O(L^2 \log L)$ and binary search takes $O(\log n) = $O
 Time:
 5 minutes
 
+
+
+---
+### Problem 485 - 
+15th February 2024
+
+**python**
+
+Features:
+ - Union of intervals structure
+ - Binary search
+ - Divisors by sieving
+
+Notes:
+We start by computing the number of divisors of all numbers up to $10^8$.
+We should not proceed with the naive attempt of computing the maximum of each sublist, this has about $10^{11}$ operations.
+However, we sort the numbers according to the number of divisors, and starting with the one with most divisors, we keep track which sublists have this element.
+This entails an object that is the union of intervals of size $10^5$.
+Other possible solutions are Range minimum query and deque.
+Most of the time is spent on the sieve of divisors, which can be sped up by using the multiplicativity property and I was a bit lazy to compute it
+
+Time:
+204 seconds
+
 ---
 ### Problem 531 - Chinese leftovers
 12th Feb 2023

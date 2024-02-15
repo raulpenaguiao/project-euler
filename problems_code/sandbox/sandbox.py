@@ -1,13 +1,21 @@
 import time
 start = time.time()
-from decimal import Decimal, getcontext
-getcontext().prec = 40
+from math import floor, sqrt
 
-LIM = 85
+LIM = 10**2
+K = 10
 
-ans = Decimal(0)
-for i in range(2, LIM + 1):
-    ans += Decimal(1)/Decimal(i*i)
+ndivs = [1 for _ in range(LIM+1)]
+ondivs = [1 for _ in range(LIM+1)]
+
+for i in range(2, LIM+1):
+    for j in range(i, LIM+1, i):
+        ndivs[j] += 1
+ans = 0
+
+
+
+
 
 print(ans)
 end = time.time()
