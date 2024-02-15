@@ -1212,6 +1212,27 @@ Time:
 
 
 ---
+### Problem 443 - GCD sequence
+15th February 2024
+
+**python**
+
+Features:
+ - Prime factorisation
+ - Sequence compression
+
+Notes:
+We note that the sequence has a lot of consecutive numbers.
+We can find the size of each subsequence of consecutive numbers.
+These runs depend on the primes dividing $g(n-1) - n$.
+Specifically, for each such divisor prime $p$, the current run of consecutive numbers can only go on for $p - 1 - (n - 1)%p$ terms before a large step.
+Looping over all primes that divide $g(n-1) - n$, we can find the size of this run and artificailly jump it.
+
+Time:
+Runs in 427 seconds, much of which is generating all primes up to $10^8$
+
+
+---
 ### Problem 461 - Almost Pi
 2023/12/14
 
@@ -1235,7 +1256,7 @@ Time:
 
 
 ---
-### Problem 485 - 
+### Problem 485 - Maximum number of divisors
 15th February 2024
 
 **python**
