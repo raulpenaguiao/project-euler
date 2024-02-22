@@ -1,3 +1,8 @@
+#Code written on the 22/02/2024
+#Using partitions enumerate  and decompose every permutation group
+#Runs in 2ms
+
+
 import time
 start = time.time()
 from ...CL.CL_Partitions import Partition_Generate

@@ -1734,6 +1734,26 @@ Time:
 
 
 ---
+### Problem 868 - Belfry maths
+22nd February 2024
+
+**python**
+
+Features:
+ - Permutations
+ - Recursion
+
+Notes:
+The order can be computed recursively, as the largest element moves in a predictable pattern, whereas the rest moves along the rule as if the other element were not there
+Let $l$ be the length of the string, $p_1$ be the position of the string after removing the largest element, and $p_2$ the position in the string of the largest element.
+If $l$ is even, the desired position is $l\times p_1 + l - 1 - p_2$, and if $l$ is odd, the desired position is $l\times p_1 + p_2$.
+
+Time:
+10 ms
+
+
+
+---
 ### Problem xxx - 
 dayth Month YYYY
 
