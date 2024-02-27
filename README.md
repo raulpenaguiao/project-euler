@@ -1707,6 +1707,53 @@ Time:
 
 
 ---
+### Problem 862 - Larger Digit Permutation
+22nd February 2024
+
+**python**
+
+Features:
+ - Partition generation
+ - Combinatorics
+
+Notes:
+Each $k$-digit integer corresponds to a partition of $k$, by grouping similar digits.
+For instance to 312313312 corresponds to the partition $(4, 3, 2)$.
+We will place the zeroes in a special position, so we define the partition signature of a number as the pair of the partition of the non-zero digits, together with the number of zeroes.
+For instance to 312313002 corresponds to the signature $(2, (3, 2, 2))$.
+For each signature we can compute the size of the permutation set of any given number with this signature.
+    If this signature $(a_0, (a_1, \ldots, a_j))$ is of a $k$ digit number, this number is $\binom{k}{a_0, \ldots, a_j} - \binom{k-1}{a_0-1, a_1, \ldots, a_j}$.
+For each signature we can compute the number of integers with the specific signature, divided by the size of the cycles.
+    If this signature $(a_0, (a_1, \ldots, a_j))$ is of a $k$ digit number, this number is $\binom{k}{b_1, \ldots, b_j}$, where $b_l$ is the number of distinct $l$ in $(a_1, \ldots, a_j)$.
+The final answer is 
+$\sum_{(a_0, (a_1, \ldots, a_j))} \left( \binom{k}{a_0, \ldots, a_j} - \binom{k-1}{a_0-1, a_1, \ldots, a_j} \right) \times \binom{k}{b_1, \ldots, b_j}$
+
+
+Time:
+2ms
+
+
+---
+### Problem 868 - Belfry maths
+22nd February 2024
+
+**python**
+
+Features:
+ - Permutations
+ - Recursion
+
+Notes:
+The order can be computed recursively, as the largest element moves in a predictable pattern, whereas the rest moves along the rule as if the other element were not there
+Let $l$ be the length of the string, $p_1$ be the position of the string after removing the largest element, and $p_2$ the position in the string of the largest element.
+If $l$ is even, the desired position is $l\times p_1 + l - 1 - p_2$, and if $l$ is odd, the desired position is $l\times p_1 + p_2$.
+
+Time:
+10 ms
+
+
+
+---
 ### Problem xxx - 
 dayth Month YYYY
 
