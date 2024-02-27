@@ -390,7 +390,7 @@ Notes:
 Code written on 2023/11/15
 $ord_a(m)$ is the smallest integer $i$ such that $m^i = 1 mod a$
 a message is unconcealed if 
- -  a = 0 mod pq, 
+ -  $a = 0$ mod $pq$, 
  -  a = 0 mod p and ord_q(a)| e-1 and (q, a) = 1
  -  a = 0 mod q and ord_p(a)| e-1 and (p, a) = 1
  -  ord_pq(a)| e-1 and (pq, a) = 1
