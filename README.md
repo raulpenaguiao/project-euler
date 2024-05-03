@@ -1754,6 +1754,24 @@ Time:
 
 
 ---
+### Problem 872 - Recursive Tree
+3rd May 2024
+
+**python**
+
+Features:
+ - Recursion
+ - Trees
+ - Digits
+ - Binary expansion
+
+Notes:
+Simple obesrvation after switching all labels from tree T_n from k to n-k, shows that a path from a number to the root is related to binary expansion.
+
+Time:
+2 ms
+
+---
 ### Problem xxx - 
 dayth Month YYYY
 
