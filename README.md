@@ -1707,6 +1707,30 @@ Time:
 
 
 ---
+### Problem 860 - 
+7th May 2024
+
+**python**
+
+Features:
+ - Modular optimisation
+ - Binomial coefficients
+ - Hackenbush calculus
+ - Combinatorics
+
+Notes:
+A major optimisation of this code is that we only want the computation to be done modulo $989898989$, this saves us big int computation time.
+There are only four types of piles, and the number of each type of pile must satisfy two equations.
+One is because there are in total $9898$ piles.
+The other is because the game is only fair if the sum of scores of all piles is zero (Hackenbush theory).
+The score of GG is $4$, SG is $1$, GS is $-1$ and SS is $-4$.
+For each possible configuration we also multiply by the appropriate multinomial.
+Precomputing the binomials is the most efficient chice and happens in less than one second.
+
+Time:
+10 seconds
+
+---
 ### Problem 862 - Larger Digit Permutation
 22nd February 2024
 
