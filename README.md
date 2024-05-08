@@ -1796,6 +1796,28 @@ Time:
 2 ms
 
 ---
+### Problem 877 - 
+8th May 2024
+
+**python**
+
+Features:
+ - Binary expansion
+ - Polynomial ring
+ - Vieta jumping
+
+Notes:
+The mathematical details will not be found here, because I don't understand why this is true.
+But we will get halfway there. First observation is that XOR sum and XOR product are simply the ring operations in $\mathbb{Z}_2[x]$.
+In this way we are solving the equation $a^2 + x a  b + b^2 = 1 + x^2 $.
+Observe that for any such solution $(a, b)$, we also have the solution $(xb + a, b)$, so by starting with the solution $(0, 3)$ we can generate a family of solutions.
+By trial up to $N < 10000$ we can observe that these solutions are actually all solutions of this equation for small values.
+
+Time:
+0 ms
+
+
+---
 ### Problem xxx - 
 dayth Month YYYY
 
@@ -1803,7 +1825,7 @@ dayth Month YYYY
 
 Features:
  - Feature 1
- - Feature 1
+ - Feature 2
 
 Notes:
 Note 1
