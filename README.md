@@ -1756,6 +1756,28 @@ $\sum_{(a_0, (a_1, \ldots, a_j))} \left( \binom{k}{a_0, \ldots, a_j} - \binom{k-
 Time:
 2ms
 
+---
+### Problem 866 - Tidying up B
+14th May 2024
+
+**python**
+
+Features:
+ - Dynamic programming
+ - Markov chain
+
+Notes:
+Looking at the process backwards we see that the last step always contributes with $n(2n - 1)$ to the final value.
+Furthermore, conditioning on the event that the last piece $L_{n, n}$ that was found has index $i$, it merges two independent processes of size $i-1$ and $n-i$.
+This gives the recursive formula for the final score $P_n$ of the process to be
+$$ P_n = \sum_{i=1}^n \mathbb{P}[L_{n, n} = i] n(2n-1) P_{i-1} P_{n-i}$$
+Taking the expectation on both sides and using independence, as well as noticing common terms, we get
+$$ P_n = (2n-1) \sum_{i=1}^n  \mathbb{E}[ P_{i-1} ]\mathbb{E}[ P_{n-i} ]$$
+
+
+Time:
+0 miliseconds
+
 
 ---
 ### Problem 868 - Belfry maths
@@ -1796,7 +1818,7 @@ Time:
 2 ms
 
 ---
-### Problem 877 - 
+### Problem 877 - XOR Equation A
 8th May 2024
 
 **python**
