@@ -2,25 +2,31 @@ import math
 from .CL_Arithmetics import PowerMod
 
 def Primes(N):
-    Nsqrt = math.floor(math.sqrt(N))+2
-    primes = [2]
-    sieve = [True for _ in range(Nsqrt)]
-    for i in range(4, Nsqrt, 2):
+    Nsqrt = math.floor(math.sqrt(N+1))
+    small_primes = [2]
+    sieve = [True for _ in range(N)]
+    sieve[0] = False
+    sieve[1] = False
+    for i in range(4, N, 2):
         sieve[i] = False
     for p in range(3, Nsqrt, 2):
         if sieve[p]:
-            primes.append(p)
-            for j in range(p*p, Nsqrt, p):
+            small_primes.append(p)
+            for j in range(p*p, N, p):
                 sieve[j] = False
-    for p in range(Nsqrt-Nsqrt%2+1, N+1):
+    return [2] + [i for i in range(3, N, 2) if sieve[i]]
+    primes = small_primes[:]
+    for p in range(Nsqrt-Nsqrt%2+1, N+1, 2):
+        if(p%312931 == 31241):
+            print(p, len(small_primes))
         flag = True
-        i = 0
-        q = primes[i]
+        i = 1
+        q = small_primes[i]
         while(flag and q*q<= p):
             if p%q == 0:
                 flag = False
             i += 1
-            q = primes[i]
+            q = small_primes[i]
         if flag:
             primes.append(p)
     return primes

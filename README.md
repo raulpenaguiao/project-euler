@@ -1800,6 +1800,26 @@ Time:
 
 
 ---
+### Problem 869 - Prime Guessing
+16th May 2024
+
+**python**
+
+Features:
+ - Recursion
+ - Miller Rabin
+ - Tree encoding of binary numbers
+
+Notes:
+Obtain the first $10^8$ primes using Miller Rabin.
+We create a binary tree structure where each prime corresponds to a unique node, whose path to root corresponds to its binary expansion.
+In this way, going through the game is going through the tree from the root until a randomly choosen prime.
+The optimal strategy is to pich the side of the tree with more primes, which is what we compute in bt.score()
+
+Time:
+70 seconds
+
+---
 ### Problem 872 - Recursive Tree
 3rd May 2024
 
