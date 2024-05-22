@@ -1837,6 +1837,28 @@ Simple obesrvation after switching all labels from tree T_n from k to n-k, shows
 Time:
 2 ms
 
+
+---
+### Problem 874 - Maximal prime score
+22nd May 2024
+
+**python**
+
+Features:
+ - Knapsack
+ - Sieve prime numbers
+
+Notes:
+First the map $p$ is increasing, so increasing the value of $a_i$ will increase the score.
+This tells us that the optimal list has sum $maxsum - (maxsum \% k)$.
+By flipping $b_i = 6999 - a_i$ we are trying to find a list $b_1, \cdots b_n$ that sums up to $maxsum \% k$ and minimizes $\sum_i prime(6999)-prime(6999-b_i)$.
+
+We switch to a maximization problem by flipping the sign, which gives us a knapsack problem: we have a bag with $maxsum \% k$ size, and there are items with volume and weight $(i, prime(6999-i)-prime(6999))$ that can be fit into the bag.
+
+Time:
+1.08 seconds
+
+
 ---
 ### Problem 877 - XOR Equation A
 8th May 2024
@@ -1860,7 +1882,7 @@ Time:
 
 
 ---
-### Problem xxx - 
+### Problem xxx - PROBLEM NAME
 dayth Month YYYY
 
 **language**
