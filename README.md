@@ -1882,6 +1882,25 @@ Time:
 
 
 ---
+### Problem 881 - Divisor Graph Width
+23rd May 2024
+
+**python**
+
+Features:
+ - Divisor lattice
+ - Partitions
+
+Notes:
+The number of elements in each level can be computed with the convolution product of lists.
+The product of the first 16 primes already has a level with $\binom{16}{8} > 10000$ elements, so we only need to test numbers with fewer than 16 prime divisors.
+We assume that the best partition does not have avy $p^8$ factor for simplicity, this seems to have worked.
+
+Time:
+0.2 seconds
+
+
+---
 ### Problem xxx - PROBLEM NAME
 dayth Month YYYY
 
@@ -1896,3 +1915,4 @@ Note 1
 
 Time:
 x seconds
+
