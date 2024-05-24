@@ -16,3 +16,24 @@ def Partition_Generate(n):
                 ans[-1] += [new_parts[i+1][:]]
 
     return ans
+
+
+
+
+def GeneratePartitionsInSquare(a, b):
+    if a == 0 or b == 0:
+        return []
+    partitionList = [[] for _ in range(a*b+1)]
+    partitionList[1].append([1])
+    partitionList[0].append([])
+    for i in range(2, a*b+1):
+        for part in partitionList[i-1]:
+            if part[0] < b and (len(part) == 1 or part[1] > part[0]):
+                newPart = part[:]
+                newPart[0] += 1
+                partitionList[i] += [newPart[:]]
+            if len(part) < a:
+                newPart = part[:]
+                newPart = [1] + newPart
+                partitionList[i] += [newPart[:]]
+    return partitionList

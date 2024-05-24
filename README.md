@@ -1901,6 +1901,53 @@ Time:
 
 
 ---
+### Problem 884 - Removing Cubes
+24th May 2024
+
+**python**
+
+Features:
+ - Recursion
+ - Rounding error precision
+ - Triangle formula $T(n) = n(n+1)/2$
+
+Notes:
+The solution revolves around the following recursion
+$S(n) = S(c)q + T(q-1)c + qr + S(r)$
+Where $c$ is the largest perfect cube $c\leq n$, and $n = c*q+r$ is the division algorithm quoficients.
+We precompute the value of $S(n)$ for cubes and memorise these, achieving a complexity of $O(n^{2/3})$.
+We need to be careful with rounding errors, as $floor(64**(1/3)) = 3$ in python.
+
+Time:
+1.352 seconds
+
+# Uses recursive formula: if $n$ is an integer and $c$ is the largest $c \leq n$ perfect cube
+# let $r = (n%c)$ and $q = n//c$
+# then $S(n) = S(c)q + T(q-1)c + qr + S(r)$
+# We precompute $S(c)$ for perfect cubes using the previous values of lower cubes
+# Careful with rounding errors when computing largest perfect cube below n
+
+---
+### Problem 885 - Sorted Digits
+24th May 2024
+
+**python**
+
+Features:
+ - Partitions
+ - Combinatorics
+
+Notes:
+Generates all numbers of up to 18 digits using digits from 0 to 9 in a sorted manner
+These are just partitions of lenght at most 18 with parts $\leq 9$, and there are about $\binom{18+9}{18} \sim 5 \cdot 10^6$
+For each such number $d$, count how many numbers of at most 18 digits will be mapped to $d$ after reordering
+This is a simple factorial product
+
+Time:
+28.26 seconds
+
+
+---
 ### Problem xxx - PROBLEM NAME
 dayth Month YYYY
 
@@ -1915,4 +1962,3 @@ Note 1
 
 Time:
 x seconds
-
