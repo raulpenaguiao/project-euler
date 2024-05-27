@@ -2,14 +2,14 @@ import math
 from .CL_Arithmetics import PowerMod
 
 def Primes(N):
-    Nsqrt = math.floor(math.sqrt(N+1))
+    Nsqrt = math.floor(math.sqrt(N+1)+0.1)
     small_primes = [2]
     sieve = [True for _ in range(N)]
     sieve[0] = False
     sieve[1] = False
     for i in range(4, N, 2):
         sieve[i] = False
-    for p in range(3, Nsqrt, 2):
+    for p in range(3, Nsqrt+1, 2):
         if sieve[p]:
             small_primes.append(p)
             for j in range(p*p, N, p):

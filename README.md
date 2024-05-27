@@ -1353,7 +1353,33 @@ Features:
  - DP[n][word][b1, b2, b3, b4] is the number of words of length n that end in word, and have an occurrence of the desired strings or not, according to b1, ..., b4
 
 Time:
-0.536 seconds for LIM = 30
+0.536 seconds for $LIM = 30$
+
+
+---
+### Problem 705 - Total Inversion Count of Divided Sequences
+27th May 2024
+
+**python**
+
+Features:
+ - Recursion
+ - Aristothenes sieve
+
+Notes:
+For a string $S$ of non-zero digits, let $N(S)$ be the number of divided sequeces obtained from $S$.
+For a digit $a$, let $div(a)$ be the number of divisors of $a$, and let $1(r|a)$ be the indicator function of $r|a$, that is it is $1$ precisely when $a$ is a multiple of $r$, and is zero otherwise.
+Define as well $L_r(S)$ to be the number of digits $r$ on all divided sequeces obtained from $S$.
+Finally, define $F(S)$ to be our target number, the total inversions done on all divided sequeces obtained from $S$.
+We have the following recursive formulas
+$$N(Sa) = N(S) \cdot div(a)$$
+$$L_r(Sa) =  L_r(S) \cdot div(a) + 1(r | a) \cdot N(S)$$
+$$F(Sa) = F(S)\cdot div(a) + \sum_{b|a} \sum{c > b} L_c(S)$$
+
+
+Time:
+150 seconds, 8 of which is to compute the prime numbers
+
 
 
 ---
@@ -1945,7 +1971,6 @@ This is a simple factorial product
 
 Time:
 28.26 seconds
-
 
 ---
 ### Problem xxx - PROBLEM NAME
