@@ -51,7 +51,7 @@ leaves.put(bt1)
 nOnes = 1
 nNodesVisited = 1
 nNodesCreated = 3
-N = 10**8
+N = 10**9
 
 while( True ):
     leaf = leaves.get()
