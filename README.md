@@ -1290,6 +1290,33 @@ Features:
 Time: 147s
 
 
+
+---
+### Problem 555 - McCarthy 91 Function
+29th May 2024
+
+**python**
+
+Features:
+ - Triangular formula
+ - Recursion
+ - Divisors iteration
+
+Notes:
+Recursive formula can be show to satisfy, for $n \leq m$, that $M_{m, k, s}(n) = n - s + (k-s)(q + 1)$ where $q = \lfloor\frac{m-n}{k-s} \rfloor$
+With this we can show what the fixed points of $M_{m, k, s}$ are 
+If $s-k|s$, they are precisely $m-2s+k-i$ for $i=0, \ldots, k-s-1$.
+Otherwise there are no fixed points
+Summing all these up gives us the formula $SF(m, k, s) = \frac{l(2(m-s)+l+1)}{2}$, where $l = k-s$ divides $s$
+Further grouping the sum over all $s$ and using triangular forumla gets us, if we set $q = \lfloor\frac{m-n}{k-s} \rfloor$, that
+$$S(m, p) = \sum_{l=1}^p \frac{1}{2} (q-1)(l(l+1) + 2lm - l^2q) $$
+Further improvements can be done because this sum is a triangular sum with using $l = q*p+r$ and iterating over $a$ and $r$.
+
+Time:
+0.13 seconds
+
+
+
 ---
 ### Problem 624 - Two heads are better than one
 10th October 2022
