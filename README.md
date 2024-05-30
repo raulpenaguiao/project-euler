@@ -1290,6 +1290,55 @@ Features:
 Time: 147s
 
 
+
+---
+### Problem 555 - McCarthy 91 Function
+29th May 2024
+
+**python**
+
+Features:
+ - Triangular formula
+ - Recursion
+ - Divisors iteration
+
+Notes:
+Recursive formula can be show to satisfy, for $n \leq m$, that $M_{m, k, s}(n) = n - s + (k-s)(q + 1)$ where $q = \lfloor\frac{m-n}{k-s} \rfloor$
+With this we can show what the fixed points of $M_{m, k, s}$ are 
+If $s-k|s$, they are precisely $m-2s+k-i$ for $i=0, \ldots, k-s-1$.
+Otherwise there are no fixed points
+Summing all these up gives us the formula $SF(m, k, s) = \frac{l(2(m-s)+l+1)}{2}$, where $l = k-s$ divides $s$
+Further grouping the sum over all $s$ and using triangular forumla gets us, if we set $q = \lfloor\frac{m-n}{k-s} \rfloor$, that
+$$S(m, p) = \sum_{l=1}^p \frac{1}{2} (q-1)(l(l+1) + 2lm - l^2q) $$
+Further improvements can be done because this sum is a triangular sum with using $l = q*p+r$ and iterating over $a$ and $r$.
+
+Time:
+0.13 seconds
+
+
+
+---
+### Problem 571 - Super Pandigital Numbers
+30th May 2024
+
+**python**
+
+Features:
+ - Permutation iteration
+ - Digits base
+
+Notes:
+We assume that the first 10 such numbers have exactly 12 digits base 12
+This is the munumal amount of digits such a number may have
+We iterate over all permutations of the 12 distinct digits base 12
+The iteration preserves the order of the underlying numbers
+For each permutation, convert to all bases < 12 and check if the condition is satisfied.
+Clue from forums: check the pandigital in each basis in reverse order, fails earlier and runs faster
+
+Time:
+4715 seconds
+
+
 ---
 ### Problem 624 - Two heads are better than one
 10th October 2022
@@ -1353,7 +1402,33 @@ Features:
  - DP[n][word][b1, b2, b3, b4] is the number of words of length n that end in word, and have an occurrence of the desired strings or not, according to b1, ..., b4
 
 Time:
-0.536 seconds for LIM = 30
+0.536 seconds for $LIM = 30$
+
+
+---
+### Problem 705 - Total Inversion Count of Divided Sequences
+27th May 2024
+
+**python**
+
+Features:
+ - Recursion
+ - Aristothenes sieve
+
+Notes:
+For a string $S$ of non-zero digits, let $N(S)$ be the number of divided sequeces obtained from $S$.
+For a digit $a$, let $div(a)$ be the number of divisors of $a$, and let $1(r|a)$ be the indicator function of $r|a$, that is it is $1$ precisely when $a$ is a multiple of $r$, and is zero otherwise.
+Define as well $L_r(S)$ to be the number of digits $r$ on all divided sequeces obtained from $S$.
+Finally, define $F(S)$ to be our target number, the total inversions done on all divided sequeces obtained from $S$.
+We have the following recursive formulas
+$$N(Sa) = N(S) \cdot div(a)$$
+$$L_r(Sa) =  L_r(S) \cdot div(a) + 1(r | a) \cdot N(S)$$
+$$F(Sa) = F(S)\cdot div(a) + \sum_{b|a} \sum{c > b} L_c(S)$$
+
+
+Time:
+150 seconds, 8 of which is to compute the prime numbers
+
 
 
 ---
@@ -1946,7 +2021,6 @@ This is a simple factorial product
 Time:
 28.26 seconds
 
-
 ---
 ### Problem xxx - PROBLEM NAME
 dayth Month YYYY
@@ -1962,3 +2036,5 @@ Note 1
 
 Time:
 x seconds
+
+
