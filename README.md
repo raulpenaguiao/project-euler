@@ -1318,6 +1318,28 @@ Time:
 
 
 ---
+### Problem 571 - Super Pandigital Numbers
+30th May 2024
+
+**python**
+
+Features:
+ - Permutation iteration
+ - Digits base
+
+Notes:
+We assume that the first 10 such numbers have exactly 12 digits base 12
+This is the munumal amount of digits such a number may have
+We iterate over all permutations of the 12 distinct digits base 12
+The iteration preserves the order of the underlying numbers
+For each permutation, convert to all bases < 12 and check if the condition is satisfied.
+Clue from forums: check the pandigital in each basis in reverse order, fails earlier and runs faster
+
+Time:
+4715 seconds
+
+
+---
 ### Problem 624 - Two heads are better than one
 10th October 2022
 
@@ -2014,3 +2036,5 @@ Note 1
 
 Time:
 x seconds
+
+

@@ -61,6 +61,8 @@ while( True ):
         leaf.parent.hasLeft = True
         leaf.parent.left = leaf
         nOnes += 1
+        if nOnes%131_301 == 13_312:
+            print("Tree not yet constructed has ", nNodesCreated,  " nodes created and ", nNodesVisited, " nodes visited")
         if nOnes == N:
             break
     if leaf.node == "0":
