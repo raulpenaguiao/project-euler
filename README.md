@@ -1741,6 +1741,31 @@ Precomputes all the prime factorizations of numbers below $1234567$
 Time:
 40s
 
+
+---
+### Problem 839 - Beans in Bowls
+31st May 2024
+
+**python**
+
+Features:
+ - Binary search
+ - Divide and conquer
+
+Notes:
+The order in which the operations are performed is irrelevant, as long as we always topple beans to the right when the left pile is higher
+Divide and conquer method: we perform the toppling process on each half of the array independently
+Then we perform a last avalanche from the left half to the right half
+For that, we do a binary search to figure out what is the height in the middle after the avalanche
+We can see if this height is enough or not in linear time, so complexity of job is $n \log n$
+
+Time:
+165.09 seconds
+
+
+# Code written on the 2024/05/31
+
+
 ---
 ### Problem 845 - Prime Digit Sum
 10th October 2023
@@ -1782,7 +1807,7 @@ Time:
 
 
 ---
-### Problem 860 - 
+### Problem 860 - Gold and Silver coin game
 7th May 2024
 
 **python**
