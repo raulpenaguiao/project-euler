@@ -1175,6 +1175,22 @@ Time:
 
 
 ---
+### Problem 349 - Langton's ant
+4th June 2024
+
+**python**
+
+Features:
+ - Simulation
+
+Notes:
+Simulates the ant progress until we spot a pattern that happens after 10k steps.
+Modular arithmetic to compute the case for $10^{18}$
+
+Time:
+4 seconds
+
+---
 ### Problem 371 - Licence Plates
 23rd October 2023
 
