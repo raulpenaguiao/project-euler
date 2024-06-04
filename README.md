@@ -664,6 +664,27 @@ Make sure to precompute the factorization of all integers < 25\times 10^6 /3 to 
 Time:
 6.6 minutes
 
+
+---
+### Problem 226 - A Scoop of Blancmange
+04th June 2024
+
+**python**
+
+Features:
+ - Graphical plotting for intuition
+ - Binary search numerical method
+ - Infinite series
+
+Notes:
+To compute desired area, it computes the integral of the BM curve
+Removes area of trapezoid
+Adds chordal section area
+Assumes that the curve intersects the circle in only two points, the second one is computed using binary search
+
+Time:
+9 mili seconds
+
 ---
 ### Problem 233 - Lattice Points on a Circle
 1st November 2023
