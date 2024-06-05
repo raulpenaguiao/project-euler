@@ -610,6 +610,27 @@ Time: 1828 seconds
 
 
 ---
+### Problem 208 - Robot Walks
+5th June 2024
+
+**python**
+
+Features:
+ - Meet-in-the-middle
+ - Dictionaries and hash functions
+
+Notes:
+Generate all all paths of size $70/2$, making sure to save only the last position and direction in a hash list.
+Paths are saved by counting how many times the robot walked a specific step.
+Each step is one of five possible steps corresponding to $5$-th roots of unity
+Directions are saved as a number between $0$ and $4$
+Two paths concatenate to a path back to the origin if they satisfy a shift condition
+A closed loop has to contain exactly the same number of steps in each direction, so this cutoff is used to disregard paths.
+
+Time:
+114 miliseconds
+
+---
 ### Problem 210 - Obtuse Angled Triangles
 30th October 2023
 
