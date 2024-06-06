@@ -7,7 +7,6 @@ class Set:
                 self.append(el)
         else:
             print("EEROOOR ", kwargs)
-    
 
     def Union(self, other):
         ans = Set(elements = self.bag)
@@ -71,3 +70,7 @@ class Set:
         ans = ans[:-1]
         ans += "}"
         return ans
+    
+    
+    def Copy(self):
+        return Set(elements = self.lst())
