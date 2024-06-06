@@ -1,7 +1,15 @@
+#Code written on the 2024/06/06
+#Inclusion exclusion to compute the volume of the union
+#Intersection of cubes is only tested when cubes ocupy the same section.
+#We split the 10k x 10k x 10k region into 15k regions, and only test intersection of cubes that occupy the same regions
+#Once all intersecting pairs of cubes are create, we generate all cliques in the resulting graph
+#Inclusion exclusion corresponds to an alternating sum in these cliques
+#Runs in 1.240 seconds
+
+
 import time
 start = time.time()
 from ....CL.CL_Sets import Set
-import math
 from itertools import combinations
 
 
@@ -109,16 +117,12 @@ def BoundingBox(cubeList):
     return ub, lb
 
 
-def CubesInBars(cubeList, cutsx, cutsy, cutsz, cubesToTrack = []):
-    #print("Cubes to track = ", cubesToTrack)
+def CubesInBars(cubeList, cutsx, cutsy, cutsz):
     nSplits = [len(cutsx)-1, len(cutsy)-1, len(cutsz)-1]
     cubesInBarsx = [Set(elements = []) for _ in range(nSplits[0])]
     cubesInBarsy = [Set(elements = []) for _ in range(nSplits[1])]
     cubesInBarsz = [Set(elements = []) for _ in range(nSplits[2])]
     for index, cube in enumerate(cubeList):
-        trackFlag = False
-        if index in cubesToTrack:
-            trackFlag = True
         flag = False
         for split in range(nSplits[0]):
             if flag or cube.low_x <= cutsx[split+1]:
@@ -126,8 +130,6 @@ def CubesInBars(cubeList, cutsx, cutsy, cutsz, cubesToTrack = []):
                 if cube.hig_x < cutsx[split]:
                     break
                 cubesInBarsx[split].append(index)
-                #if trackFlag:
-                #    print(index, split, " x", cubesInBarsx[split])
         flag = False
         for split in range(nSplits[1]):
             if flag or cube.low_y <= cutsy[split+1]:
@@ -135,8 +137,6 @@ def CubesInBars(cubeList, cutsx, cutsy, cutsz, cubesToTrack = []):
                 if cube.hig_y < cutsy[split]:
                     break
                 cubesInBarsy[split].append(index)
-                #if trackFlag:
-                #    print(index, split, " y", cubesInBarsy[split])
         flag = False
         for split in range(nSplits[2]):
             if flag or cube.low_z <= cutsz[split+1]:
@@ -144,34 +144,15 @@ def CubesInBars(cubeList, cutsx, cutsy, cutsz, cubesToTrack = []):
                 if cube.hig_z < cutsz[split]:
                     break
                 cubesInBarsz[split].append(index)
-                #if trackFlag:
-                #    print(index, split, " z", cubesInBarsz[split])
     return cubesInBarsx, cubesInBarsy, cubesInBarsz
 
 
 def UnionCubesVolume(cubeList):
-    """
-    BFedges = []
-    for i1, i2 in combinations(enumerate(cubeList), 2):
-        index_1, cube_1 = i1
-        index_2, cube_2 = i2
-        if cube_1.areConnected(cube_2):
-            BFedges.append([index_1, index_2])
-    BFedges.sort()
-    print("Number of edges = ", len(BFedges))"""
-    #for e in edges:
-    #    print(cubeList[e[0]])
-    #    print(cubeList[e[1]])
-    
     ub, lb = BoundingBox(cubeList)
     lenLim = LargestLengths(cubeList)
-    #print("Bounding box is ", lb, ub)
     nSplits = [(ubi - lbi)//lenLimi for ubi, lbi, lenLimi in zip(ub.lst(), lb.lst(), lenLim.lst())]
     cutsx, cutsy, cutsz = [[lbi + lenLimi*i for i in range(nSplit)] + [ubi] for ubi, lbi, nSplit, lenLimi in zip(ub.lst(), lb.lst(), nSplits, lenLim.lst())]
-    #print("Cuts in x ", cutsx)
-    #print("Cuts in y ", cutsy)
-    #print("Cuts in z ", cutsz)
-    cubesInBarsx, cubesInBarsy, cubesInBarsz = CubesInBars(cubeList, cutsx, cutsy, cutsz)#, cubesToTrack = [e[0] for e in edges]+ [e[1] for e in edges])
+    cubesInBarsx, cubesInBarsy, cubesInBarsz = CubesInBars(cubeList, cutsx, cutsy, cutsz)
     edges = []
     for splitx in range(nSplits[0]):
         cubesInSplitsx = cubesInBarsx[splitx]
@@ -179,18 +160,13 @@ def UnionCubesVolume(cubeList):
             cubesInSplitsxy = cubesInSplitsx.Intersection(cubesInBarsy[splity])
             for splitz in range(nSplits[2]):
                 cubesInSplitsxyz = cubesInSplitsxy.Intersection(cubesInBarsz[splitz])
-                #if splitx == 24 and splity == 9 and splitz == 18:
-                #    print(cubesInSplitsx, cubesInSplitsxy, cubesInSplitsxyz)
                 for index_1, index_2 in combinations(cubesInSplitsxyz.lst(), 2):
                     cube_1 = cubeList[index_1]
                     cube_2 = cubeList[index_2]
-                    #if index_1 == 58 and index_2 == 67:
-                    #    print(index_1, index_2)
                     if cube_1.areConnected(cube_2):
                         edges.append([min(index_1, index_2), max(index_1, index_2)])
 
     edges = DeletedCopies(edges)
-    #print("Number of edges = ", len(edges))
 
     neigs = [Set(elements = []) for _ in cubeList]
     for e in edges:
@@ -199,7 +175,6 @@ def UnionCubesVolume(cubeList):
     ans = 0
     for cube in cubeList:
         ans += cube.volume()
-    #print(ans)
 
     previousCliques = []
     for e in edges:
@@ -210,11 +185,8 @@ def UnionCubesVolume(cubeList):
     sign = -1
     k = 2
     while previousCliques:
-        print("Number of ", k, " cliques = ", len(previousCliques))
         currCliques = []
         for clique in previousCliques:
-            if k >= 8:
-                print(clique.cube, " with volume ", clique.cube.volume(), clique.list)
             ans += sign*clique.cube.volume()
             for nb in clique.neigs.lst():
                 cliqueSet = clique.list[:]
@@ -234,16 +206,12 @@ Mod = 10_000
 mod = 399
 
 LIM = 50_000
-#LIM = 20_000
-#LIM = 10_000
-#LIM = 1579#13022800300 CHECK
-#LIM = 100#723581599 CHECK
 
 Seq = [0] + [(100003 - 200003*k+300007*k*k*k)%MOD for k in range(1, 55+1)]
 for i in range(56, LIM*6+1):
     Seq.append((Seq[i-24]+Seq[i-55])%MOD)
 Cubes = [Cube([Seq[6*i-5]%Mod, Seq[6*i-4]%Mod, Seq[6*i-3]%Mod], [1 + Seq[6*i-2]%mod, 1 + Seq[6*i-1]%mod, 1 + Seq[6*i]%mod], type = "length") for i in range(1, LIM+1)]
-print(Cubes[1])
+
 print("Answer = ", UnionCubesVolume(Cubes))
 end = time.time()
 print("Time elapsed ", end - start, " seconds")

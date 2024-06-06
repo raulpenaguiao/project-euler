@@ -645,6 +645,30 @@ There are three types of points, the hardest ones are in the circle that are dea
 Time:
 14.14 seconds
 
+
+
+---
+### Problem 212 - Combined Volume of Cuboids
+6th June 2024
+
+**python**
+
+Features:
+ - Inclusion exclusion
+ - Graphs
+ - Map subdivision
+
+Notes:
+Inclusion exclusion to compute the volume of the union
+Intersection of cubes is only tested when cubes ocupy the same section.
+We split the 10k x 10k x 10k region into 15k regions, and only test intersection of cubes that occupy the same regions
+Once all intersecting pairs of cubes are create, we generate all cliques in the resulting graph
+Inclusion exclusion corresponds to an alternating sum in these cliques
+
+Time:
+1.240 seconds
+
+
 ---
 ### Problem 213 - Flea Circus
 12th December 2023
