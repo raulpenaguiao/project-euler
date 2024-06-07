@@ -3,42 +3,44 @@ import math
 start = time.time()
 ans = 0
 
-LIM = 1*(10**7)
-sqrtLIM = math.floor(math.sqrt(LIM))
-a1 = [False for _ in range(LIM+1)]
-a2 = [False for _ in range(LIM+1)]
-a3 = [False for _ in range(LIM+1)]
-a4 = [False for _ in range(LIM+1)]
-print("List created")
-end = time.time()
-print("Time elapsed ", end - start, " seconds")
+LIM = 200*(10**1)
+sqrtLIM = math.floor(math.sqrt(LIM + 1))
+a1 = {}
+a2 = {}
+a3 = {}
+a4 = {}
+squares = [i*i for i in range(sqrtLIM)]
 for s1 in range(1, sqrtLIM):
-    if s1%51 == 13:
+    if s1%514 == 13:
         print(s1)
     for s2 in range(1, sqrtLIM):
-        v = s1*s1+s2*s2
+        v = squares[s1]+squares[s2]
         if v <= LIM:
             a1[v] = True
         else:
             continue
-        v += s2*s2
+        v += squares[s2]
         if v <= LIM:
             a2[v] = True
         else:
             continue
-        v += s2*s2
+        v += squares[s2]
         if v <= LIM:
             a3[v] = True
         else:
             continue
-        v += 4*s2*s2
+        v += 4*squares[s2]
         if v <= LIM:
             a4[v] = True
 
+print("Dics created")
+end = time.time()
+print("Time elapsed ", end - start, " seconds")
 
-for a in range(1, LIM+1):
-    if a1[a] and a2[a] and a3[a] and a4[a]:
+for a in a4:
+    if a in a1 and a in a2 and a in a3:
         ans += 1
+        print(a)
 print("Answer = ", ans)
 end = time.time()
 print("Time elapsed ", end - start, " seconds")
