@@ -668,7 +668,6 @@ Inclusion exclusion corresponds to an alternating sum in these cliques
 Time:
 1.240 seconds
 
-
 ---
 ### Problem 213 - Flea Circus
 12th December 2023
@@ -689,6 +688,33 @@ Possible optimization cuts time in half: the markov chain is bipartite, explore 
 
 Time:
 592 seconds
+
+---
+### Problem 217 - Balanced Numbers
+7th June 2024
+
+**python**
+
+Features:
+ - Digits
+ - Dynamic programming and recursive formula
+
+Notes:
+Dynamic programming computes four important quantities. Let $s(k)$ be the sum of digits of $k$, and $n(k)$ be the number of its digits.
+Note that $s(0) = n(0) = 0$. The following sum runs over non-negative integers
+$Q_0(n, s) = \sum_{n(l) = n, s(l) = s} 1$
+$Q_1(n, s) = \sum_{n(l) = n, s(l) = s} l$
+$T_0(n, s) = \sum_{n(l) = n, s(l) \leq s} 1$
+$T_1(n, s) = \sum_{n(l) = n, s(l) \leq s} l$
+These quantities satisfy a recursive relation, and its dimensions are $(n+1)\times(9n+1)$, where $n$ is the maximal number of digits we are considering.
+In this way, the number of balanced integers with exactly $2h$ digits is 
+$\sum_s 10^h \cdot T_0(h, s) \cdot Q_1(h, s) + 10^{0} \cdot T_1(h, s) \cdot Q_0(h, s)$
+And with exactly $2h+1$ digits is
+$\sum_s 10^{h+1}\cdot 10 \cdot T_0(h, s) \cdot Q_1(h, s) + 10^h\cdot 45 \cdot T_0(h, s) \cdot Q_0(h, s) + 10^{0}\cdot 10 \cdot T_1(h, s) \cdot Q_0(h, s)$
+
+Time:
+19 miliseconds
+
 
 ---
 ### Problem 223 - Almost Right-angled Triangles I
