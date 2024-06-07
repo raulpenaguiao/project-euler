@@ -135,7 +135,7 @@ Notes:
 
 
 ---
-### Problem xxx - 
+### Problem 152 - Sums of Squares of Reciprocals
 18th January 2024
 
 **python**
@@ -150,20 +150,19 @@ Features:
 
 Notes:
 This was really a tough nut to crack. I believe the hardest problem in PE that I have solved. For sure the one that took the most time from me.
-I tried a bunch of strategies, like meet in the middle and creating sum sets that sum in a bounded target
+I tried a bunch of strategies, like meet in the middle and creating sum sets that sum in a bounded target.
+
 I came across a really nice fact when searching for this problem on the net (kudos to  [Setphan Brumme](https://euler.stephan-brumme.com/152/) for pointing it out).
 I don't usually search for ideas on the internet and if I do it is often on [Project Euler chat](projecteuler.chat)
+
 The idea presented there is that for you to clear primes from the denominator, you have to use denominators with this prime.
-This clears all primes that occur once, and the ones that occur more than once can be tested individually to find all the sums that clear the denominators
-To be careful that some numbers are multiples of different large primes (ex 35=5*7) so make sure you test it on only one prime
-To be careful as well on the meet in the middle strategy that when we find a hit, there may be another term just behind the hit that should be counted. This makes a huge difference!
-The roller coaster of this problem proved to be extremely interesting but frustrating...
+This means all primes that occur once will never be cleared, and the key idea here is that the ones that occur more than once can be tested independently to find all the sums that clear the denominators
+Careful that some numbers are multiples of different large primes (ex 35=5*7) so make sure you test it on only one prime
+Careful as well on the meet in the middle strategy that when we find a hit, there may be another term just behind the hit that should be counted. This makes a huge difference!
+The roller coaster of this problem proved to be extremely frustrating but interesting...
 
 Time:
-2.509976 seconds seconds
-
-
-
+2.509976 seconds
 
 ---
 ### Problem 153 - Investigating Gaussian Integers
@@ -345,7 +344,7 @@ deleting the last digit gives us an easy recursive formula
 Time: 3ms
 
 ---
-###Problem 176 - Right-angled triangles that share a cathetus
+### Problem 176 - Right-angled triangles that share a cathetus
 
 **python** and **pen and paper**
 
@@ -702,14 +701,22 @@ Features:
 Notes:
 Dynamic programming computes four important quantities. Let $s(k)$ be the sum of digits of $k$, and $n(k)$ be the number of its digits.
 Note that $s(0) = n(0) = 0$. The following sum runs over non-negative integers
+
 $Q_0(n, s) = \sum_{n(l) = n, s(l) = s} 1$
+
 $Q_1(n, s) = \sum_{n(l) = n, s(l) = s} l$
+
 $T_0(n, s) = \sum_{n(l) = n, s(l) \leq s} 1$
+
 $T_1(n, s) = \sum_{n(l) = n, s(l) \leq s} l$
+
 These quantities satisfy a recursive relation, and its dimensions are $(n+1)\times(9n+1)$, where $n$ is the maximal number of digits we are considering.
 In this way, the number of balanced integers with exactly $2h$ digits is 
+
 $\sum_s 10^h \cdot T_0(h, s) \cdot Q_1(h, s) + 10^{0} \cdot T_1(h, s) \cdot Q_0(h, s)$
+
 And with exactly $2h+1$ digits is
+
 $\sum_s 10^{h+1}\cdot 10 \cdot T_0(h, s) \cdot Q_1(h, s) + 10^h\cdot 45 \cdot T_0(h, s) \cdot Q_0(h, s) + 10^{0}\cdot 10 \cdot T_1(h, s) \cdot Q_0(h, s)$
 
 Time:
