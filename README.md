@@ -830,6 +830,34 @@ Possible improvements:
 Time:
 0.582 seconds
 
+---
+### Problem 242 - Odd triplets
+10th June 2024
+
+**python**
+
+Features:
+ - Binomial coefficient module
+ - Sierpinsky triangle
+
+Notes:
+For $n = 3 mod 4$, we can show that $f(n, k)$ is always even.
+Indeed, by performing a shift $s \mapsto n - s + 1$, we obtain another set with the same parity.
+This will be the same set as the original one if total sum is a multiple of $\frac{n+1}{2}$, which is even.
+
+For $n = 1 mod 4$ and $k = 3 mod 4$ we can show that $f(n, k)$ is always even. Let $m = \frac{n-1}{2}$, which is necessarily even.
+Indeed, the previous pairing between sets will have some fixed points: the sets that contain $m+1$, plus exactly $j = \frac{k-1}{2}$ pairs of the form $s, n - s + 1$
+There are $\binom{m}{j}$ such pairs, which is necessarily an even number because $m$ is even and $j$ is odd.
+
+For $n = k = 1 mod 4$, by the previous reasoning $f(n, k)$ has the parity of $\binom{m}{j} = \binom{(m-1)/2}{(j-1)/2} mod 2$
+Therefore, the number of desired odd triplets with $n < N$ is the number of pairs $j_0 \leq m_0 < \frac{N}{4}$ such that $\binom{m_0}{j_0}$ is odd.
+
+This is easily done with the following criteria: $\binom{m_0}{j_0}$ is odd is and only if every non-zero digit of the binary expansion of $j_0$ occurs in the same position
+as a non-zero digit of the binary expansion of $m_0$.
+
+Time:
+0 ms
+
 
 ---
 ### Problem 247 - Squares Under a Hyperbola
@@ -1675,6 +1703,30 @@ Features:
 Time:
 100 seconds in UZH server
 
+
+
+---
+### Problem 759 - A Squared Recurrence Relation
+10th June 2024
+
+**python**
+
+Features:
+ - Binomial coeficient
+ - Symmetric function simplification
+ - Digits function
+
+Notes:
+Induction proves that $f(i) = i\times d(i)$, where $d(i)$ is the number of one digits in the binary expansion of $i$
+The sum $S(n) = \sum_d d^2 \sum_{i: d(i) = d, i\leq n} i^2$ can be split into distinct blocks according to the binary expansion of $n+1$
+Crutial step is computing the following function
+
+$M_i(k, d) = \sum_{0 \leq l_1 < \cdots < l_d < k} (2^{l_1} + \cdots 2^{l_k})^i$
+
+We use it for $i = 0, 1, 2$
+
+Time:
+2 ms
 
 ---
 ### Problem 772 - Balanceable k-bounded partitions
