@@ -1025,6 +1025,31 @@ Time:
 
 
 ---
+### Problem 268 - At Least Four Distinct Prime Factors Less Than 1000
+11th June 2024
+
+**python**
+
+Features:
+ - Binomial coefficient
+ - Inclusion exclusion
+ - Binomial relations
+ - Prime sieving
+
+Notes:
+Generates all products of primes below $10^{16}$ in about 30 seconds
+For each product, counts its contribution using inclusion exclusion principles. That is the resulting sum is
+
+$\sum_{l\geq 4} a_k \sum_{i_1<\cdots <i_l} \# \bigcap_{s=1}^l P_{i_s}$
+
+The correct coefficient for the inclusion exclusion is $a_k = \sum_{m\geq 4} \binom{k}{m}(-1)^{k-m}$
+This is because these are the coeficients that satisfy that $\sum_k \binom{l}{k}a_k $ is one precisely when $l\geq 4$, and is zero otherwise.
+An error took me so much time because I was computing $a_l \times N \textdiv prod$ instead of $a_l \times (N \textdiv prod)$. (Operation precedence is important!)
+
+Time:
+40.23 seconds
+
+---
 ### Problem 276 - Primitive Triangles
 28th November 2023
 
