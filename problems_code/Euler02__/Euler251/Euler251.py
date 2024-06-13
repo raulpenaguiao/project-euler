@@ -1,5 +1,5 @@
 #Code written on the 2024/06/12
-#$(a, b, c)$ forms a cardano triple if and only if $(2a - 1)^3 = 27 (a^2 - b^2 \cdot c)$
+#$(a, b, c)$ forms a cardano triple if and only if $(2a - 1)^3 = 27 (b^2 \cdot c - a^2)$
 #Runs in more than 200.000 seconds
 
 
@@ -17,7 +17,7 @@ end = time.time()
 print("Time elapsed ", end - start, " seconds  :: Primes computed up to ", 8*(N//3))
 LM = 1+(1+N)//3
 for a0 in range(1, LM):
-    if a0%5152 == 23:
+    if a0%15152 == 23:
         end = time.time()
         print("Time elapsed ", end - start, " seconds :: ", a0, " vs ", LM)
     sqrval = a0*(8*a0 - 3)
