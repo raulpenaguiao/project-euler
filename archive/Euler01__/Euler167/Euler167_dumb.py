@@ -44,6 +44,34 @@ def UlamSeq(a, b, lm):
             ans.append(s)
         del dic[s]
 
+def UlamSeqAllTerms(a, b, lm):
+    dic = {a:1, b:1}
+    ans = [a, b]
+    q = queue.PriorityQueue()
+    q.put(a+b)
+    dic[a+b] = True
+    count = 2
+    while not q.empty():
+        s = q.get()
+        if dic[s]:
+            count += 1
+            if count == lm:
+                return ans
+            if count%9839 == 3132:
+                print(a, b, lm, count, s)
+            for i in ans:
+                nv = i+s
+                if nv in dic:
+                    dic[nv] = False
+                else:
+                    dic[nv] = True
+                    q.put(nv)
+            ans.append(s)
+        del dic[s]
+us = UlamSeqAllTerms(2, 5, 300)
+print(us)
+usDiff = [us[i+1] - us[i] for i in range(len(us)-1)]
+print(usDiff)
 
 def ListUlamSeq(a, b, UB):
     dic = {a:1, b:1}

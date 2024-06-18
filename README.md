@@ -291,6 +291,29 @@ Notes:
 Time: 
     32.2 seconds
 
+
+---
+### Problem 167 - Investigating Ulam Sequences
+18th June 2024
+
+**python**
+
+Features:
+ - Dictionary
+ - Periodic sequences
+
+Notes:
+Ulam sequences were studied already, and here is what we know for sequences starting with 2:
+   the differences are eventually periodic
+   there are only two even terms in the sequence
+   any other term is the sum of an even term and an odd term in the sequence
+   the periods were studied for all the given sizes and can be found here: S. Finch. Patterns in 1-additive Sequences. Experimental Mathematics, 1(1):57–63, 1992
+So our algorithm adds a new term to the sequence in constant time.
+
+Time:
+7.805 seconds
+
+
 ---
 ### Problem 170 - Pandigital Concatenating Products
 7th December 2023
@@ -721,6 +744,35 @@ $\sum_s 10^{h+1}\cdot 10 \cdot T_0(h, s) \cdot Q_1(h, s) + 10^h\cdot 45 \cdot T_
 
 Time:
 19 miliseconds
+
+
+
+---
+### Problem 222 - Sphere packing
+18th June 2024
+
+**python**
+
+Features:
+ - Guess the pattern
+ - 2D reduction
+ - Hamiltonian path
+
+Notes:
+It is not possible for three spheres to mutually touch, so we can simply reduce the problem to the plane
+   Fit the 21 circles in between lines 100mm apart
+   This corresponds to a minimal Hamiltonian cycle with 22 vertices (21 corresponding to the different circles and 1 corresponding to the endpoints)
+vertices: {0, 30, 31, 32, ..., 49, 50} and edges have the following distance
+dist(a, b) = 10 sqrt(2(a+b) - 100) is a, b> 0
+dist(a, 0) = a if a>0
+Distance function is concave so it is better to balls of similar size together
+Let's try smaller cases and find a pattern, we do it with 9 balls
+The pattern is the largest balls on the ends and smallest in the middle.
+
+Time:
+0 seconds
+
+
 
 
 ---
