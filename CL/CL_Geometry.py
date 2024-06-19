@@ -47,7 +47,16 @@ def VectorTwoPoints(P1, P2):
     return Vector(P2.x-P1.x, P2.y-P1.y)
 
 def AngleVector(V1, V2):
-    return acos( float(V1.innerProduct(V2))/(float(V1.norm()*V2.norm())) )
+    quotient = float(V1.innerProduct(V2))/(float(V1.norm()*V2.norm()))
+    if quotient > 1:
+        if quotient > 1.001:
+            raise Exception("Problematic number in vector")
+        quotient = 1
+    elif quotient < -1:
+        if quotient < -1.001:
+            raise Exception("Problematic number in vector")
+        quotient = -1
+    return acos(quotient)
 
 
 def AnglePoints(P1, P2, P3):

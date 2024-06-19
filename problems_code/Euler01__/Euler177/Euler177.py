@@ -8,12 +8,15 @@
 
 import time
 start = time.time()
-import math
+ans = 0
+from math import sin, cos, atan, floor, tan
 from decimal import *
-getcontext().prec = 16
+import random
+from ....CL.CL_Geometry import Point, AnglePoints
+getcontext().prec = 46
 
 PI = Decimal(3.1415926535897932384)
-PREC = Decimal(10**-14)
+PREC = Decimal(10**(-7))
 I80 = Decimal(180)
 
 def DegToRad(alph):
@@ -25,37 +28,37 @@ def RadToDeg(alph):
 
 
 def s(alpha):
-    return math.sin(DegToRad(alpha))
+    return sin(DegToRad(alpha))
 
 
 def c(alpha):
-    return math.cos(DegToRad(alpha))
+    return cos(DegToRad(alpha))
 
 
-def Sigma(alpha, beta, gamma, tau):
-    a = I80 - alpha - beta
-    b = I80 - alpha
-    d = alpha - gamma
-    e = I80 - b - tau
-    tansigma = s(alpha)*s(e)*s(a)*s(gamma)/(s(d)*s(beta)*s(tau) + s(e)*s(a)*s(gamma)*c(alpha))
-    return RadToDeg(math.atan(tansigma))
+def ct(alpha):
+    t = tan(DegToRad(alpha))
+    if abs(t) < PREC:
+        return 10**89
+    return Decimal(1)/Decimal(t)
+
+
+def A1(DEGgamma1, DEGtau2, DEGtau1, DEGbeta2, DEGbeta1, DEGalpha2):
+    a = s(DEGtau1)*s(DEGgamma1)*s(DEGbeta1)
+    b = s(DEGtau2)*s(DEGbeta2)*s(DEGalpha2)
+    den = a+b*c(DEGtau1+DEGbeta2)
+    if abs(den) < PREC:
+        DEGa1 = Decimal(90)
+    else:
+        tanSigma = s(DEGtau1+DEGbeta2)*b/den
+        DEGa1 = RadToDeg(atan(tanSigma))
+    return DEGa1
 
 
 def rnd(x):
-    return math.floor(x+Decimal(0.5))
-
+    return floor(x+Decimal(0.5))
 
 def isInteger(x):
     return abs(rnd(x)-x) < PREC
-
-
-def Quadrilateral(alpha, beta, gamma, tau, sigma):
-    a = 180 - alpha - beta
-    b = 180 - alpha
-    d = alpha - gamma
-    e = 180 - tau - b
-    pi = b - sigma
-    return (gamma, beta, a, tau, e, sigma, pi, d)
 
 def Rotation(quad):
     return tuple([quad[i] for i in range(2, 8)] + [quad[0], quad[1]])
@@ -90,165 +93,156 @@ def GenerateIsoQuads(quad):
     return ans
 
 
+
+def isKite(quad):
+    return quad[0] + quad[1] == 90
+
+
+def isCyclic(quad):
+    return quad[0] == quad[5]
+
+def IsValid(g1, t2, t1, b2, b1, a2, a1, g2):
+    if not rnd(g1+t2+t1+b2) == 180:
+        return "Triangle 1 not right"
+    if not rnd(t1+b2+b1+a2) == 180:
+        return "Triangle 2 not right"
+    if not rnd(b1+a2+a1+g2) == 180:
+        return "Triangle 3 not right"
+    if not rnd(a1+g2+g1+t2) == 180:
+        return "Triangle 4 not right"
+    if g1 <= 0 or t2 <= 0 or t1 <= 0 or b2 <= 0 or b1 <= 0 or a2 <= 0 or a1 <= 0 or g2 <= 0:
+        return "Non positive angles"
+    if abs(s(a1)*s(b1)*s(g1)*s(t1) - s(a2)*s(b2)*s(g2)*s(t2)) > PREC:
+        return "No sine relation"
+    return ""
+
+def InnerAnglesFromPoints(A, B, C, D):
+    RADgamma1 = Decimal(AnglePoints(D, A, C))
+    RADtau2 = Decimal(AnglePoints(B, D, A))
+    RADtau1 = Decimal(AnglePoints(C, D, B))
+    RADbeta2 = Decimal(AnglePoints(A, C, D))
+    RADbeta1 = Decimal(AnglePoints(B, C, A))
+    RADalpha2 = Decimal(AnglePoints(D, B, C))
+    RADalpha1 = Decimal(AnglePoints(A, B, D))
+    RADgamma2 = Decimal(AnglePoints(B, A, C))
+    return RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2
+
+
+#Create 100 random convex squares to test our functions
+lst = []
+for i in range(10):
+    A = Point(Decimal(random.random()) - Decimal(1.5), Decimal(random.random()) + Decimal(0.5))
+    B = Point(Decimal(random.random()) + Decimal(0.5), Decimal(random.random()) + Decimal(0.5))
+    C = Point(Decimal(random.random()) + Decimal(0.5), Decimal(random.random()) - Decimal(1.5))
+    D = Point(Decimal(random.random()) - Decimal(1.5), Decimal(random.random()) - Decimal(1.5))
+    RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2 = InnerAnglesFromPoints(A, B, C, D)
+    if abs(RADtau1 + RADbeta2 - RADgamma2 - RADalpha1) > PREC:
+        print([RadToDeg(RADgamma1), RadToDeg(RADtau2), RadToDeg(RADtau1), RadToDeg(RADbeta2), RadToDeg(RADbeta1), RadToDeg(RADalpha2), RadToDeg(RADalpha1), RadToDeg(RADgamma2)])
+    lst += [[RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2]]
+
+
+#For each test square, see if the angles formed are indeed valid or not
+#If not, then this will print a message
+for RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2 in lst:
+    isv = IsValid(RadToDeg(RADgamma1), RadToDeg(RADtau2), RadToDeg(RADtau1), RadToDeg(RADbeta2), RadToDeg(RADbeta1), RadToDeg(RADalpha2), RadToDeg(RADalpha1), RadToDeg(RADgamma2))
+    if not isv == "":
+        print(isv, RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2)
+    if abs(RADtau1 + RADbeta2 - RADgamma2 - RADalpha1) > PREC:
+        print("Angle sum criteria", RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2 )
+    if abs( s(RadToDeg(RADgamma2))  - (s(RadToDeg(RADtau1+RADbeta2))*c(RadToDeg(RADalpha1)) - c(RadToDeg(RADtau1+RADbeta2))*s(RadToDeg(RADalpha1)))) > PREC:
+        print("Sine sum criteria", RADgamma1, RADtau2, RADtau1, RADbeta2, RADbeta1, RADalpha2, RADalpha1, RADgamma2 )
+    diff = abs(A1(RadToDeg(RADgamma1), RadToDeg(RADtau2), RadToDeg(RADtau1), RadToDeg(RADbeta2), RadToDeg(RADbeta1), RadToDeg(RADalpha2)) - RadToDeg(RADalpha1))
+    if diff > PREC:
+        print("Diff crit ",diff, RADalpha1)
+
+
+
+#Our square of interest has vertices ABCD (think A top right, B top left, C bottom right, D bottom left)
+#The angles are 
+# gamma1 = angle(DAC)
+# tau2 = angle(BDA)
+# tau1 = angle(CDB)
+# beta2 = angle(ACD)
+# beta1 = angle(BCA)
+# alpha2 = angle(DBC)
+# alpha1 = angle(ABC)
+# gamma2 = angle(CAB)
+#We are finding all quadrilaterals whose beta1, beta2, tau1, tau2 are integer angles s.t. beta2 is one of the smallest angles of these four
+
 squares = {}
-
-for a in range(1, 91):
-    end = time.time()
-    print(" a = ", a,  "|Time elapsed ", end - start, " seconds")
-    alpha = Decimal(a)
-    for b in range(1, 180-a):
-        end = time.time()
-        #print(" a = ", a," b = ", b,  "|Time elapsed ", end - start, " seconds")
-        beta = Decimal(b)
-        for g in range(1, a):
-            end = time.time()
-            #print(" a = ", a," b = ", b," c = ", g,  "|Time elapsed ", end - start, " seconds")
-            gamma = Decimal(g)
-            for t in range(1, a):
-                tau = Decimal(t)
-                sg = Sigma(a, b, g, t)
-                if isInteger(sg):
-                    quad = Quadrilateral(a, b, g, t, rnd(sg))
-                    #print(GenerateIsoQuads(quad))
-                    for q in GenerateIsoQuads(quad):
-                        squares[q] = True
-
-
-def TestSquare(q):
-    if not sum(q) == 360:
-        return False
-    if q[0] + q[1] >= 180:
-        return False
-    if q[2] + q[3] >= 180:
-        return False
-    if q[4] + q[5] >= 180:
-        return False
-    if q[6] + q[7] >= 180:
-        return False
-    if q[2] + q[1] >= 180:
-        return False
-    if q[4] + q[3] >= 180:
-        return False
-    if q[6] + q[5] >= 180:
-        return False
-    if q[0] + q[7] >= 180:
-        return False
-    if not q[1]+q[2]+q[3]+q[4] == 180:
-        return False
-    if not q[3]+q[4]+q[5]+q[6] == 180:
-        return False
-    if not q[5]+q[6]+q[7]+q[0] == 180:
-        return False
-    if not q[7]+q[0]+q[1]+q[2] == 180:
-        return False
-    if not q[1]+q[2] == q[5] + q[6]:
-        return False
-    return True
-
-def IsKite(q):
-    return q[1]+q[2] == 90
+for b2 in range(1, 46):
+    #end = time.time()
+    #print("b2 = " ,  b2, " Time elapsed ", end - start, " seconds")
+    beta2 = Decimal(b2)
+    for b1 in range(b2, 180 - b2):#We can assume that b1 >= b2 to break the symmetry
+        beta1 = Decimal(b1)
+        for t1 in range(b1, 180 - b1 - b2):#We can assume that t1 >= b2 to break the symmetry
+            tau1 = Decimal(t1)
+            a2 = 180 - t1 - b1 - b2
+            if a2 < b2:#We can assume that a2 >= b2 to break the symmetry
+                continue
+            alpha2 = Decimal(a2)
+            for t2 in range(b1, 180 - t1 - b2):#We can assume that t2 >= b2 to break the symmetry
+                g1 = 180 - t1 - t2 - b2
+                if g1 < b2:#We can assume that g1 >= b2 to break the symmetry
+                    continue
+                tau2 = Decimal(t2)
+                gamma1 = Decimal(g1)
+                alpha1 = A1(gamma1, tau2, tau1, beta2, beta1, alpha2)
+                if not isInteger(alpha1):
+                    continue
+                a1 = rnd(alpha1)
+                g2 = t1 + b2 - a1
+                if  a1 < b2 or g2 < b2:#We can assume that a1 >= b2 and g2 >= b2 to break the symmetry
+                    continue
+                isvalid = IsValid(g1, t2, t1, b2, b1, a2, a1, g2)
+                if isvalid == "":
+                    squares[(g1, t2, t1, b2, b1, a2, a1, g2)] = True
 
 
-def IsCyclic(q):
-    return q[0] + q[1] + q[4] + q[5] == 180
+def PointFromAngles(DEGbeta, DEGalpha):
+    if abs(DEGbeta + DEGalpha - 180) < PREC:
+        return Point(10**86, ct(DEGalpha)*10**86)
+    x = Decimal(1)/(ct(DEGbeta) + ct(DEGalpha))
+    return Point(x, ct(DEGalpha)*x)
 
+
+def FindPoints(quad):
+    A = Point(0, 0)
+    B = PointFromAngles(quad[0] + quad[7], quad[2])
+    C = PointFromAngles(quad[0], quad[1] + quad[2])
+    D = Point(0, 1)
+    return [A, B, C, D]
+
+#Let's write each quadrilateral found in a file, along with a possible representation (i.e. four points)
+open("quads_list.txt", "w").close()
+f = open("quads_list.txt", "w")
+
+ansKite = 0
+ansCyclic = 0
+lst = []
+for quad in squares:
+    if squares[quad]:
+        f.write(str(quad))
+        f.write(" _ ")
+        A, B, C, D = FindPoints(quad)
+        f.write(str([rnd(RadToDeg(a)) for a in InnerAnglesFromPoints(A, B, C, D)]))
+        #Instead of writing representation we write the angles and compare
+        #This is to test if the function is working. IT IS NOT WORKING
+        ans += 1
+        geniso = GenerateIsoQuads(quad)
+        if isKite(quad):
+            ansKite += 1
+        if isCyclic(quad):
+            ansCyclic += 1
+        for q in geniso:
+            if q in squares:
+                squares[q] = False
+        f.write("\n")
+
+f.close()
+print("Kites = ", ansKite)
+print("Cyclic = ", ansCyclic)
+print("Answer = ", ans)
 end = time.time()
 print("Time elapsed ", end - start, " seconds")
-tot = 0
-num = 0
-cksquares = 0
-for q in squares:
-    num += 1
-    if not TestSquare(q):
-        print(q,  " does not conform with the required shape")
-    if squares[q]:
-        tot += 1
-        if IsKite(q) and IsCyclic(q):
-            cksquares += 1
-            print(q)
-        for p in GenerateIsoQuads(q):
-            squares[p] = False
-
-print("Answer up to symetry = ", tot, " not up to symetry = ", num, " cyclic kites = ", cksquares)
-end = time.time()
-print("Time elapsed ", end - start, " seconds")
-
-
-
-"""
-def G1(b, c, d, e):
-    return math.atan((math.sin(b+e)*math.sin(e)*math.sin(b+e-c)*math.sin(b))/( (math.sin(d)*math.sin(b+d+e)*math.sin(c)) - (math.sin(b+e-c)*math.sin(b)*math.sin(e)*math.cos(b+e)) ))
-
-
-def RemoveCopies(l):
-    if l == []:
-        return []
-    s = sorted(l)
-    ans = [s[0]]
-    for i in range(1, len(s)):
-        if not(s[i] == s[i-1]):
-            ans += [s[i-1]]
-    return ans
-
-
-def SortedQuad(l, m, n):
-    o = 360 - l - m - n
-    allIso = [(l, m, n, o), (o, l, m, n), (n, o, l, m), (m, n, o, l), (o, n, m, l), (n, m, l, o), (m, l, o, n), (l, o, n, m)]
-    allIso.sort()
-    return allIso[0]
-
-
-for b in range(1, 46):
-    c = 45
-    d = 45
-    e = 90 - b
-    print("b = ", b, " and gamma = ", RadToDeg(G1(DegToRad(180-e-d), DegToRad(b), DegToRad(c), DegToRad(d))))
-
-
-a = 60
-b = 60
-c = 30
-d = 60
-gamma = 60
-l1 = 1
-l2 = math.sqrt(3)
-l3 = math.sqrt(3)
-l4 = 1
-
-print(math.sin(DegToRad(c))/l4, math.sin(DegToRad(a+b+c))/l1)
-print(math.sin(DegToRad(b))/l2, math.sin(DegToRad(b+c+d))/l1)
-print(math.sin(DegToRad(a))/l3, math.sin(DegToRad(b+c-gamma))/l4)
-print(math.sin(DegToRad(d))/l3, math.sin(DegToRad(gamma))/l2)
-
-def Gamma(a, b, c, d):
-    return RadToDeg(math.atan( (math.sin(DegToRad(b))*math.sin(DegToRad(d))*math.sin(DegToRad(a+b+c))*math.sin(DegToRad(a+b))) /
-                      ((math.sin(DegToRad(c))*math.sin(DegToRad(a))*math.sin(DegToRad(b+c+d)))+
-                       (math.sin(DegToRad(b))*math.sin(DegToRad(d))*math.sin(DegToRad(a+b+c))*math.cos(DegToRad(a+b))))))
-
-def GamTop(a, b, c, d):
-    return (math.sin(DegToRad(b))*math.sin(DegToRad(d))*math.sin(DegToRad(a+b+c))*math.sin(DegToRad(a+b)))
-
-
-def GamBot1(a, b, c, d):
-    return math.sin(DegToRad(c))*math.sin(DegToRad(a))*math.sin(DegToRad(b+c+d))
-
-
-def GamBot2(a, b, c, d):
-    return math.sin(DegToRad(b))*math.sin(DegToRad(d))*math.sin(DegToRad(a+b+c))*math.cos(DegToRad(a+b))
-
-print(math.sin(DegToRad(a)))
-print(math.sin(DegToRad(b)))
-print(math.sin(DegToRad(c)))
-print(math.sin(DegToRad(d)))
-print(Gamma(a, b, c, d), GamTop(a, b, c ,d), GamBot1(a, b, c ,d), GamBot2(a, b, c ,d))
-
-for b in range(1, 46):
-    for c in range(b, 180-b):
-        for d in range(b, 180-b-1):
-            for e in range(b, 180-2*b-d):
-                g1 = RadToDeg(G1(DegToRad(b), DegToRad(c), DegToRad(d), DegToRad(e)))
-                g1INT = math.floor(g1+TOL)
-                y = 180 - g1INT - e
-                if( y > 0 and y < 180 and abs(g1 - g1INT) < TOL):
-                    ans += [SortedQuad(b+c, 180 - b - d, y)]
-"""
