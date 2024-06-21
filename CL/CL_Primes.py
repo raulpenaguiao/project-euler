@@ -15,21 +15,6 @@ def Primes(N):
             for j in range(p*p, N, p):
                 sieve[j] = False
     return [2] + [i for i in range(3, N, 2) if sieve[i]]
-    primes = small_primes[:]
-    for p in range(Nsqrt-Nsqrt%2+1, N+1, 2):
-        if(p%312931 == 31241):
-            print(p, len(small_primes))
-        flag = True
-        i = 1
-        q = small_primes[i]
-        while(flag and q*q<= p):
-            if p%q == 0:
-                flag = False
-            i += 1
-            q = small_primes[i]
-        if flag:
-            primes.append(p)
-    return primes
 
 def PrimeFactorization(n, primes):
     m = n
@@ -45,7 +30,7 @@ def PrimeFactorization(n, primes):
             ans.append([primes[i], exp])
         i += 1
     if m > 1 and len(primes) == i:
-        if primes[i-2]**2 > m:
+        if primes[i-1]**2 > m:
             ans.append([m, 1])
         else:
             raise Exception("Not enough primes computed")
@@ -65,7 +50,6 @@ def EulerPhi(N):
             phi[j] -= phi[k]
     return phi
 
-
 def Divisors_FC(fc):
     if fc == []:
         return [1]
@@ -83,7 +67,6 @@ def Divisors_FC(fc):
 def Divisors(n, primes):
     fc = PrimeFactorization(n, primes)
     return Divisors_FC(fc)
-
 
 def MRTest(n, r, verbose = False):
     d = n-1
