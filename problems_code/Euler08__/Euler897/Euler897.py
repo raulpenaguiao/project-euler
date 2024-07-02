@@ -31,6 +31,8 @@ def FindNTerms(a0, a1, n):
         a_i = FindQuadricSolution(-lin, lin*a_im1 - a*a*a*a, Decimal(2)*a-a_im1)
         a_im1 = a
         ans.append(a_i)
+        if a_i > Decimal(1):
+            return ans + [a_i]*(n-len(ans))
     return ans
 
 
