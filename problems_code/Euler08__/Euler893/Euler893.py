@@ -7,7 +7,7 @@
 #First we compute the number of matchsticks required for creating a number.
 #This part takes O(N)
 #Then we compute the number of matchsticks required for creating a number using products
-#This part takes O(N*sqrt(N))
+#This part takes O(N + N*log(N)/2)
 #Then we compute the number of matchsticks required for creating a number using products and sums
 #This part takes too long... O(N^2) We need to improve this.
 

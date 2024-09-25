@@ -1499,6 +1499,29 @@ Time:
 
 
 ---
+### Problem 476 - Circle Packing II
+25th September 2024
+
+**python**
+
+Features:
+ - Greedy algeorithm
+ - Geometry
+
+Notes:
+Uses the greedy algorithm to iteratively find the largest circle that fits in the remaining space. This is shown to work here 
+Wiki: https://en.wikipedia.org/wiki/Malfatti_circles
+cite: "triangles a larger area can be achieved by a greedy algorithm"
+For this, we see that larger angles give smaller circles, so we start with the incircle and the circle close to the smallest angle.
+It turs out that the remaining circle will never be nestled between the two other circles.
+
+
+Time:
+330 seconds
+
+
+
+---
 ### Problem 485 - Maximum number of divisors
 15th February 2024
 
