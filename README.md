@@ -2337,6 +2337,32 @@ Time:
 28.26 seconds
 
 ---
+### Problem 893 - Matchsticks
+26th September 2024
+
+**python**
+
+Features:
+ - Dynammic programming
+ - Rod cutting problem
+
+Notes:
+# dynamic programming in stages corresponding to the three different operations (concatenation, product, sum)
+
+
+The code runs in three steps.
+First we compute the number of matchsticks required for creating a number.
+This part takes O(N)
+Then we compute the number of matchsticks required for creating a number using products
+This part takes O(N + N*log(N)/2)
+Then we compute the number of matchsticks required for creating a number using products and sums
+This part takes too long... O(N^2) We need to improve this. By putting numbers in different buckets according to the value in the product, and just analyzing thoes sums that have bounded sum, we are able to bring the execution time it down.
+
+Time:
+152 seconds
+
+
+---
 ### Problem xxx - PROBLEM NAME
 dayth Month YYYY
 
