@@ -1,4 +1,4 @@
-def PowerMod(a, d, p):
+def PowerMod(a: int, d: int, p: int):
     if d == 0:
         return 1
     if d == 1:

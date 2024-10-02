@@ -1413,6 +1413,29 @@ Notes:
 Time:
 2.21 ms
 
+
+
+---
+### Problem 377 - Sum of Digits
+30th September 2024
+
+**python**
+
+Features:
+ - Combinatorics
+ - Recurrence relation
+ - Digit sum
+ - OEIS research
+ - Fast exponent for sequences
+
+Notes:
+After finding a brute force formula for the first digits, one finds the sequence in OEIS (A211072).
+A small dp program helps us getting the first 20 terms, and fast exponent allows us to get to large terms of the sequence.
+
+Time:
+0.248 seconds
+
+
 ---
 ### Problem 425 - Prime Connection
 7th Dezember 2023
@@ -1474,6 +1497,25 @@ Looping over all primes that divide $g(n-1) - n$, we can find the size of this r
 Time:
 Runs in 427 seconds, much of which is generating all primes up to $10^8$
 
+---
+### Problem 452 - Long Products
+2nd October 2024
+
+**python**
+
+Features:
+ - Counting balls and bars
+ - Multiplicative functions
+
+Notes:
+Let $f(i, n)$ be the number of $n$-tuples whose product is exactly $i$, then $F(m, n) = \sum_{i \leq m} f(i, n)$
+Then $f(i, n)$ is multiplicative, and for powers of primes it is simply a binomial coefficient using balls and bars reasoning.
+
+Time:
+1092 seconds
+
+# Code written on the 2024/10/02
+# Runs in 1092 seconds
 
 ---
 ### Problem 461 - Almost Pi

@@ -25,6 +25,8 @@ class Rational:
 
     def __str__(self):
         self.reduce()
+        if self.denominator == 1:
+            return str(self.numerator)
         return str(self.numerator) + "/" + str(self.denominator)
 
 
@@ -76,6 +78,7 @@ class Rational:
         self.denominator = self.denominator * rat.denominator
         self.reduce()
     
+    
 
     @staticmethod
     def Plus(r1, r2):
@@ -87,6 +90,9 @@ class Rational:
 
     def __add__(self, rat):
         return Rational.Plus(self, rat)
+    
+    def __radd__(self, other : int):
+        return Rational.Plus(self, Rational(other))
 
     def multiply(self, rat):
         self.reduced = False
@@ -106,9 +112,15 @@ class Rational:
     def __sub__(self, rat):
         return Rational.Plus(self, Rational.Times(rat, Rational(-1)))
     
+    def __rsub__(self, other : int):
+        return Rational.Plus(self, Rational.Times(Rational(other), Rational(-1)))
+    
     
     def __mul__(self, rat):
         return Rational.Times(self, rat)
+    
+    def __rmult__(self, other : int):
+        return Rational.Times(self, Rational(other))
     
     def Reverse(r1):
         ans = Rational(r1.denominator, r1.numerator)
@@ -138,3 +150,15 @@ class Rational:
         self.numerator = a
         self.denominator = b
         return True
+    
+
+    def __mod__(self, mod : int):
+        self.reduce()
+        if gcd(self.denominator, mod) == 1:
+            return Rational(self.numerator % mod, self.denominator)
+        else:
+            print("Ups.... ", self, mod)
+            return self
+            #raise Exception("Invalid module operation on rational field.")
+    
+    
