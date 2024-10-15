@@ -1320,6 +1320,25 @@ Time:
 
 
 ---
+### Problem 325 - Stone Game II
+8th November 2023
+
+**sage**
+
+Features:
+ - Game theory
+ - Integer points in a polyhedron
+
+Notes:
+    The set of losing positions are the integet points $(x, y)$ such that $x\neq y$ that are inside the cone $x/phi < y < x*phi$
+    The desired sum can be extended to counting the number of integer points inside a 3 dimentional polytope
+    We compute this polytope here, runs in very few time. Afterwards we need to use sage to compute the number of integer pts
+
+Time:
+5.084355 seconds
+
+
+---
 ### Problem 332 - Spherical Triangles
 21st December 2023
 
@@ -1341,23 +1360,26 @@ Time:
     1107.95 seconds
 
 
----
-### Problem 325 - Stone Game II
-8th November 2023
 
-**sage**
+---
+### Problem 343 - Fractional Sequences
+15th October 2024
+
+**python**
 
 Features:
- - Game theory
- - Integer points in a polyhedron
+ - Prime sieve
+ - Guess a sequence
 
 Notes:
-    The set of losing positions are the integet points $(x, y)$ such that $x\neq y$ that are inside the cone $x/phi < y < x*phi$
-    The desired sum can be extended to counting the number of integer points inside a 3 dimentional polytope
-    We compute this polytope here, runs in very few time. Afterwards we need to use sage to compute the number of integer pts
+The first few terms give us that the sequence is related to the largest prime factor of $n+1$.
+Code written on the 2024/06/21 and ran in October
+From the factorization $k^3+1 = (k+1)(k^2-k+1)$ we only need to find prime numbers up to $\sqrt{k^2-k+1} = k$.
 
 Time:
-5.084355 seconds
+6000 seconds
+
+
 
 ---
 ### Problem 348 - Sum of a Square and a Cube

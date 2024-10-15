@@ -1,6 +1,6 @@
 #Code written on the 2024/06/21
-# From the factorization $k^3+1 = (k+1)(k^2-k+1)$ we only need to find prime numbers up to $\sqrt{k^2-k+1} = k$.
-#Expected to run in 3600 seconds, or one hour
+#From the factorization $k^3+1 = (k+1)(k^2-k+1)$ we only need to find prime numbers up to $\sqrt{k^2-k+1} = k$.
+#Runs in 5996.64 seconds
 
 
 import time
